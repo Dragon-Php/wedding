@@ -14,6 +14,16 @@
 
 {{ Html::script('admin/js/jquery.waypoints.min.js')}}
 {{ Html::script('admin/js/jquery.counterup.min.js')}}
+{{ Html::script('admin/js/datatable.js')}}
+{{ Html::script('admin/js/datatables.min.js')}}
+{{ Html::script('admin/js/datatables.bootstrap.js')}}
+
+{{ Html::script('admin/js/select2.full.min.js')}}
+{{ Html::script('admin/js/jquery.validate.min.js')}}
+{{ Html::script('admin/js/additional-methods.min.js')}}
+{{ Html::script('admin/js/bootstrap-datepicker.min.js')}}
+{{ Html::script('admin/js/ckeditor.js')}}
+
 
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
@@ -21,6 +31,9 @@
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 {{ Html::script('admin/js/dashboard.min.js')}}
+{{ Html::script('admin/js/table-datatables-editable.min.js')}}
+{{ Html::script('admin/js/form-validation.min.js')}}
+
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
 {{ Html::script('admin/js/layout.min.js')}}

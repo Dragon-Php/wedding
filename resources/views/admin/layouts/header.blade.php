@@ -15,6 +15,13 @@
     <!-- BEGIN PAGE LEVEL PLUGINS -->
     {{ Html::style('admin/css/daterangepicker.min.css')}}
     {{ Html::style('admin/css/morris.css')}}
+
+    {{ Html::style('admin/css/datatables.min.css')}}
+    {{ Html::style('admin/css/datatables.bootstrap.css')}}
+
+    {{ Html::style('admin/css/select2.min.css')}}
+    {{ Html::style('admin/css/select2-bootstrap.min.css')}}
+    {{ Html::style('admin/css/bootstrap-datepicker3.min.css')}}
    
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->

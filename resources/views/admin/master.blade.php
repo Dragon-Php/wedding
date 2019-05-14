@@ -114,6 +114,11 @@
         <!-- END QUICK NAV -->
         <!--[if lt IE 9] -->
         @include('admin.layouts.script')
+
+        <script type="text/javascript">
+            
+            // $('#sample_editable_1').dataTable();
+        </script>
         
     </body>
 </html>

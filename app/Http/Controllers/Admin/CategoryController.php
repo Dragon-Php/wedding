@@ -13,4 +13,14 @@ class CategoryController extends Controller
     {
     	$this->__req = $__req;
     }
+
+    public function index()
+    {
+    	return view('admin.category.list');
+    }
+
+    public function create()
+    {
+    	return view('admin.category.add');
+    }
 }
