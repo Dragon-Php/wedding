@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->isActive(['In Active', 'Active'])->default('0');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         DB::table('users')->insert(

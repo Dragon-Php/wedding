@@ -17,4 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('Admin-Dashboard', 'HomeController@index')->name('admin_dashboard');
+
+Route::group(['middleware'=>['auth'], 'namespace'=>'Admin'], function(){
+	Route::get('Admin-Dashboard', 'DashboardController@index')->name('admin_dashboard');
+	Route::get('Admin-Category', 'CategoryController@index')->name('admincategory');
+	Route::get('Admin-AddCategory', 'CategoryController@create')->name('admin_addcategory');
+});
+
+

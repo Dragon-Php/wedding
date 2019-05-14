@@ -845,6 +845,27 @@ class Blueprint
     }
 
     /**
+     * Create a new isActive column on the table.
+     *
+     * @param  string  $column
+     * @param  array  $allowed
+     * @return \Illuminate\Database\Schema\ColumnDefinition
+     */
+    public function isActive(array $allowed = [])
+    {
+        $comment = '';
+        if(empty($allowed)){
+            $allowed = ['0', '1'];
+        } else {
+            foreach ($allowed as $key => $value) {
+                $comment .= $key .'=' .$value.', ';
+            }
+            $allowed = array_keys($allowed);
+        }
+        return $this->addColumn('enum', 'is_active', compact('allowed'))->comment(rtrim($comment, ', '));
+    }
+
+    /**
      * Create a new enum column on the table.
      *
      * @param  string  $column
