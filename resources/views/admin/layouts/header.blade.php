@@ -22,6 +22,8 @@
     {{ Html::style('admin/css/select2.min.css')}}
     {{ Html::style('admin/css/select2-bootstrap.min.css')}}
     {{ Html::style('admin/css/bootstrap-datepicker3.min.css')}}
+    {{ Html::style('admin/css/bootstrap-multiselect.css')}}
+    {{ Html::style('admin/css/bootstrap-fileinput.css')}}
    
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->

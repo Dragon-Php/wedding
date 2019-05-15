@@ -22,7 +22,9 @@
 {{ Html::script('admin/js/jquery.validate.min.js')}}
 {{ Html::script('admin/js/additional-methods.min.js')}}
 {{ Html::script('admin/js/bootstrap-datepicker.min.js')}}
-{{ Html::script('admin/js/ckeditor.js')}}
+{{ Html::script('admin/js/ckeditor/ckeditor.js')}}
+{{ Html::script('admin/js/bootstrap-multiselect.js')}}
+{{ Html::script('admin/js/bootstrap-fileinput.js')}}
 
 
 <!-- END PAGE LEVEL PLUGINS -->
@@ -33,6 +35,7 @@
 {{ Html::script('admin/js/dashboard.min.js')}}
 {{ Html::script('admin/js/table-datatables-editable.min.js')}}
 {{ Html::script('admin/js/form-validation.min.js')}}
+{{ Html::script('admin/js/components-bootstrap-multiselect.min.js')}}
 
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
