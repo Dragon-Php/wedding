@@ -53,7 +53,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="btn-group">
-                                        <a href="{{route('admin_addcategory')}}" class="btn green"> Add New
+                                        <a href="{{route('admin_addvendortype')}}" class="btn green"> Add New
                                             <i class="fa fa-plus"></i>
                                         </a>
                                     </div>
@@ -73,14 +73,14 @@
                             </thead>
                             <tbody>
                                 @php $i = 1; @endphp
-                                @foreach($categories as $category)
+                                @foreach($resultData as $rowData)
                                 <tr>
                                     <td> {{$i}} </td>
-                                    <td> {{$category->title}} </td>
+                                    <td> {{$rowData->title}} </td>
                                     
                                     <td>
-                                        <a class="btn btn-sm btn-primary" title="Edit" href="{{ url('Admin-EditCategory/'.$category->id)}}"> <i class="fa fa-pencil"></i> </a>
-                                        <a class="btn btn-sm btn-danger" title="Delete" href="{{ url('Admin-DeleteCategory/'.$category->id)}}"> <i class="fa fa-trash"></i> </a>
+                                        <a class="btn btn-sm btn-primary" title="Edit" href="{{ url('Admin-EditVendorType/'.$rowData->id)}}"> <i class="fa fa-pencil"></i> </a>
+                                        <a class="btn btn-sm btn-danger" title="Delete" href="{{ url('Admin-DeleteVendorType/'.$rowData->id)}}"> <i class="fa fa-trash"></i> </a>
                                     </td>
                                 </tr>
                                 @php $i++; @endphp

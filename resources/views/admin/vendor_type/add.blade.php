@@ -35,7 +35,7 @@
                     </div>
                     <div class="portlet-body">
                         <!-- BEGIN FORM-->
-                        {{ Form::open(['url' => url('Admin-EditCategory/'.\Request::segment(2)), 'class'=>'form-horizontal' ])}}
+                        {{ Form::open(['url' => route('admin_addvendortype'), 'class'=>'form-horizontal' ])}}
                             <div class="form-body">
                                 <div class="alert alert-danger display-hide">
                                     <button class="close" data-close="alert"></button> You have some form errors. Please check below. </div>
@@ -46,13 +46,13 @@
                                         <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-4">
-                                        {{ Form::text('title', $editData->title, ['class'=>'form-control', 'data-required'=>'1'])}}
+                                        <input type="text" name="title" data-required="1" class="form-control" /> 
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3">Vendor </label>
+                                    <label class="control-label col-md-3">Categories </label>
                                     <div class="col-md-4">
-                                        {{ Form::select('vendor_type', $vendortype, '', ['class'=>'mt-multiselect btn btn-default', 'multiple'=>'multiple', 'data-label'=>'left', 'data-select-all'=>'true', 'data-width'=>'100%', 'data-filter'=>'true', 'data-action-onchange'=>'true'])}}
+                                        {{ Form::select('category', $category, '', ['class'=>'mt-multiselect btn btn-default', 'multiple'=>'multiple', 'data-label'=>'left', 'data-select-all'=>'true', 'data-width'=>'100%', 'data-filter'=>'true', 'data-action-onchange'=>'true'])}}
                                         <!-- <select class="mt-multiselect btn btn-default" multiple="multiple" data-label="left" data-select-all="true" data-width="100%" data-filter="true" data-action-onchange="true" name="vendor_type">
                                            
                                         </select> --> 

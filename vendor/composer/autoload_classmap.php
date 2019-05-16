@@ -27,6 +27,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Traits\\Active' => $baseDir . '/app/Http/Traits/Active.php',
     'App\\Http\\Traits\\ActiveScope' => $baseDir . '/app/Http/Traits/ActiveScope.php',
+    'App\\Master\\Category' => $baseDir . '/app/Master/Category.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

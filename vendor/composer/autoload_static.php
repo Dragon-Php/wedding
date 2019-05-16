@@ -387,6 +387,7 @@ class ComposerStaticInit36eab415b8b15e72caa3c955511e4eaa
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Traits\\Active' => __DIR__ . '/../..' . '/app/Http/Traits/Active.php',
         'App\\Http\\Traits\\ActiveScope' => __DIR__ . '/../..' . '/app/Http/Traits/ActiveScope.php',
+        'App\\Master\\Category' => __DIR__ . '/../..' . '/app/Master/Category.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

@@ -35,7 +35,7 @@
                     </div>
                     <div class="portlet-body">
                         <!-- BEGIN FORM-->
-                        {{ Form::open(['url' => url('Admin-EditCategory/'.\Request::segment(2)), 'class'=>'form-horizontal' ])}}
+                        {{ Form::open(['url' => url('Admin-EditVendorType/'.\Request::segment(2)), 'class'=>'form-horizontal' ])}}
                             <div class="form-body">
                                 <div class="alert alert-danger display-hide">
                                     <button class="close" data-close="alert"></button> You have some form errors. Please check below. </div>

@@ -35,7 +35,7 @@
                     </div>
                     <div class="portlet-body">
                         <!-- BEGIN FORM-->
-                        <form action="#" id="form_sample_1" class="form-horizontal">
+                        {{ Form::open(['url' => route('admin_addcategory'), 'class'=>'form-horizontal' ])}}
                             <div class="form-body">
                                 <div class="alert alert-danger display-hide">
                                     <button class="close" data-close="alert"></button> You have some form errors. Please check below. </div>
@@ -46,41 +46,20 @@
                                         <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-4">
-                                        <input type="text" name="name" data-required="1" class="form-control" /> 
+                                        <input type="text" name="title" data-required="1" class="form-control" /> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3">Vendor </label>
                                     <div class="col-md-4">
-                                        <select class="mt-multiselect btn btn-default" multiple="multiple" data-label="left" data-select-all="true" data-width="100%" data-filter="true" data-action-onchange="true">
-                                            <option value="1">Option 1</option>
-                                            <option value="2">Option 2</option>
-                                            <option value="3">Option 3</option>
-                                            <option value="4">Option 4</option>
-                                            <option value="5">Option 5</option>
-                                            <option value="6">Option 6</option>
-                                        </select> 
+                                        {{ Form::select('vendor_type', $vendortype, '', ['class'=>'mt-multiselect btn btn-default', 'multiple'=>'multiple', 'data-label'=>'left', 'data-select-all'=>'true', 'data-width'=>'100%', 'data-filter'=>'true', 'data-action-onchange'=>'true'])}}
+                                        <!-- <select class="mt-multiselect btn btn-default" multiple="multiple" data-label="left" data-select-all="true" data-width="100%" data-filter="true" data-action-onchange="true" name="vendor_type">
+                                           
+                                        </select> --> 
                                     </div>
                                 </div>
                             
-                                <div class="form-group">
-                                    <label class="control-label col-md-3">Image
-                                        <span class="required"> * </span>
-                                    </label>
-                                    <div class="col-md-4">
-                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
-                                            <div>
-                                                <span class="btn red btn-outline btn-file">
-                                                    <span class="fileinput-new"> Select image </span>
-                                                    <span class="fileinput-exists"> Change </span>
-                                                    <input type="file" name="image"> </span>
-                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
-                                            </div>
-                                        </div>
-                                                        
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="form-actions">
                                 <div class="row">

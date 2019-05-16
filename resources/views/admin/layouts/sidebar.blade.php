@@ -40,6 +40,25 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">Vendor Type</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{ route('adminvendortype')}}" class="nav-link ">
+                            <span class="title">List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{route('admin_addvendortype')}}" class="nav-link ">
+                            <span class="title">Add</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             
         </ul>
         <!-- END SIDEBAR MENU -->

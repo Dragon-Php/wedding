@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Master\Category;
 use App\Master\VendorType;
 
-class CategoryController extends Controller
+class VendorTypeController extends Controller
 {
     private $__req;
 
@@ -19,8 +19,8 @@ class CategoryController extends Controller
     public function index()
     {
         
-        $data['categories'] = Category::get(['title', 'id']);
-    	return view('admin.category.list', $data);
+        $data['resultData'] = VendorType::get(['title', 'id']);
+    	return view('admin.vendor_type.list', $data);
     }
 
     public function create()
@@ -28,56 +28,57 @@ class CategoryController extends Controller
 
         if($this->__req->isMethod('post')){
             $this->validate($this->__req, [
-                'title' => 'required|unique:categories|string',
+                'title' => 'required|unique:vendor_types|string',
             ]);
             $insert = $this->__req->only(['title']);
             $insert['is_active'] = '1';
-            Category::create($insert);
+            $insert['slug'] = $this->__req->title;
+            VendorType::create($insert);
             if(!$this->__req->vendor_type){
 
             }
 
-            return redirect(route('admincategory'))->with('success', 'Record saved successfully.');
+            return redirect(route('adminvendortype'))->with('success', 'Record saved successfully.');
 
         }
         $data['category'] = Category::pluck('title', 'id');
         $data['vendortype'] = VendorType::pluck('title', 'id');
-        return view('admin.category.add', $data);
+        return view('admin.vendor_type.add', $data);
     }
 
     public function edit($id)
     {
-        $data['editData'] = Category::find($id);
+        $data['editData'] = VendorType::find($id);
         if(empty($data['editData'])){
-            return redirect(route('admincategory'))->with('error', 'Record not found.');
+            return redirect(route('adminvendortype'))->with('error', 'Record not found.');
         }
 
         if($this->__req->isMethod('post')){
             $this->validate($this->__req, [
-                'title' => 'required|unique:categories|string',
+                'title' => 'required|unique:vendor_types|string',
             ]);
             $insert = $this->__req->only(['title']);
             $data['editData']->update($insert);
             if(!$this->__req->vendor_type){
 
             }
-            return redirect(route('admincategory'))->with('success', 'Record updated successfully.');
+            return redirect(route('adminvendortype'))->with('success', 'Record updated successfully.');
 
         }
         $data['category'] = Category::pluck('title', 'id');
         $data['vendortype'] = VendorType::pluck('title', 'id');
-        return view('admin.category.edit', $data);
+        return view('admin.vendor_type.edit', $data);
     }
 
     public function delete($id)
     {
-        $data['editData'] = Category::find($id);
+        $data['editData'] = VendorType::find($id);
         if(!empty($data['editData'])){
             $data['editData']->forceDelete();
-            return redirect(route('admincategory'))->with('success', 'Record deleted successfully.');
+            return redirect(route('adminvendortype'))->with('success', 'Record deleted successfully.');
 
         } else {
-            return redirect(route('admincategory'))->with('error', 'Record not found.');
+            return redirect(route('adminvendortype'))->with('error', 'Record not found.');
 
         }
         
