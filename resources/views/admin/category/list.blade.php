@@ -7,23 +7,23 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{url('/')}}">Home</a>
                     <i class="fa fa-circle"></i>
                 </li>
                 <li>
-                    <a href="#">Tables</a>
+                    <a href="#">{{ $__module }}</a>
                     <i class="fa fa-circle"></i>
                 </li>
                 <li>
-                    <span>Datatables</span>
+                    <span>List</span>
                 </li>
             </ul>
             
         </div>
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
-        <h1 class="page-title"> Editable Datatables
-            <small>editable datatable samples</small>
+        <h1 class="page-title"> {{ $__module }}
+            <small>{{ $__module }} List</small>
         </h1>
         <!-- END PAGE TITLE-->
         <!-- END PAGE HEADER-->
@@ -34,7 +34,7 @@
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="icon-settings font-red"></i>
-                            <span class="caption-subject font-red sbold uppercase">Editable Table</span>
+                            <span class="caption-subject font-red sbold uppercase">{{ $__module }}</span>
                         </div>
                         
                     </div>
@@ -67,16 +67,25 @@
                                 <tr>
                                     <th> S. No. </th>
                                     <th> Title </th>
-                                   
+                                    <th> Vendor Type </th>
                                     <th> Action </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $i = 1; @endphp
                                 @foreach($categories as $category)
+
+                                @php 
+                                    $vendortype = '';
+                                    $vendor_types = $category->vendor_type()->get();
+                                    foreach($vendor_types as $vendor_type){
+                                        $vendortype .= ucfirst($vendor_type->title).', ';
+                                    }
+                                @endphp
                                 <tr>
                                     <td> {{$i}} </td>
                                     <td> {{$category->title}} </td>
+                                    <td> {{trim($vendortype, ', ')}} </td>
                                     
                                     <td>
                                         <a class="btn btn-sm btn-primary" title="Edit" href="{{ url('Admin-EditCategory/'.$category->id)}}"> <i class="fa fa-pencil"></i> </a>

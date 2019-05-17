@@ -16,4 +16,9 @@ class VendorType extends Model
     {
     	return $this->attributes['slug'] = \Str::lower(str_replace(' ', '_', $value));
     }
+
+    public function category()
+    {
+    	return $this->belongsToMany('App\Master\Category', 'category_vendor_type');
+    }
 }

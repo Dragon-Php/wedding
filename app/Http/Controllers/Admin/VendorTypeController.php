@@ -18,14 +18,14 @@ class VendorTypeController extends Controller
 
     public function index()
     {
-        
+        $data['__module'] = 'Vendor Type';
         $data['resultData'] = VendorType::get(['title', 'id']);
     	return view('admin.vendor_type.list', $data);
     }
 
     public function create()
     {
-
+        $data['__module'] = 'Vendor Type';
         if($this->__req->isMethod('post')){
             $this->validate($this->__req, [
                 'title' => 'required|unique:vendor_types|string',
@@ -33,11 +33,10 @@ class VendorTypeController extends Controller
             $insert = $this->__req->only(['title']);
             $insert['is_active'] = '1';
             $insert['slug'] = $this->__req->title;
-            VendorType::create($insert);
-            if(!$this->__req->vendor_type){
-
+            $vendor_type = VendorType::create($insert);
+            if($this->__req->category){
+                $vendor_type->category()->sync($this->__req->category);
             }
-
             return redirect(route('adminvendortype'))->with('success', 'Record saved successfully.');
 
         }
@@ -48,19 +47,26 @@ class VendorTypeController extends Controller
 
     public function edit($id)
     {
+        $data['__module'] = 'Vendor Type';
         $data['editData'] = VendorType::find($id);
         if(empty($data['editData'])){
             return redirect(route('adminvendortype'))->with('error', 'Record not found.');
         }
 
+        $data['selected_categories'] = [];
+        $categories = $data['editData']->category()->get();
+        foreach ($categories as $vendortype) {
+            $data['selected_categories'][] = $vendortype->id;
+        }
+
         if($this->__req->isMethod('post')){
             $this->validate($this->__req, [
-                'title' => 'required|unique:vendor_types|string',
+                'title' => 'required|string',
             ]);
             $insert = $this->__req->only(['title']);
             $data['editData']->update($insert);
-            if(!$this->__req->vendor_type){
-
+            if($this->__req->category){
+                $data['editData']->category()->sync($this->__req->category);
             }
             return redirect(route('adminvendortype'))->with('success', 'Record updated successfully.');
 

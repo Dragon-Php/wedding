@@ -11,11 +11,11 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{url('/')}}">Home</a>
                     <i class="fa fa-circle"></i>
                 </li>
                 <li>
-                    <span>Form Stuff</span>
+                    <span>Add New</span>
                 </li>
             </ul>
             
@@ -29,7 +29,7 @@
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="icon-settings font-red"></i>
-                            <span class="caption-subject font-red sbold uppercase">Basic Validation</span>
+                            <span class="caption-subject font-red sbold uppercase">{{ $__module}}</span>
                         </div>
                         
                     </div>
@@ -52,7 +52,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3">Categories </label>
                                     <div class="col-md-4">
-                                        {{ Form::select('category', $category, '', ['class'=>'mt-multiselect btn btn-default', 'multiple'=>'multiple', 'data-label'=>'left', 'data-select-all'=>'true', 'data-width'=>'100%', 'data-filter'=>'true', 'data-action-onchange'=>'true'])}}
+                                        {{ Form::select('category[]', $category, '', ['class'=>'mt-multiselect btn btn-default', 'multiple'=>'multiple', 'data-label'=>'left', 'data-select-all'=>'true', 'data-width'=>'100%', 'data-filter'=>'true', 'data-action-onchange'=>'true'])}}
                                         <!-- <select class="mt-multiselect btn btn-default" multiple="multiple" data-label="left" data-select-all="true" data-width="100%" data-filter="true" data-action-onchange="true" name="vendor_type">
                                            
                                         </select> --> 

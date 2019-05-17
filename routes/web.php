@@ -32,6 +32,14 @@ Route::group(['middleware'=>['auth'], 'namespace'=>'Admin'], function(){
 	Route::match(['get', 'post'],'Admin-AddVendorType', 'VendorTypeController@create')->name('admin_addvendortype');
 	Route::match(['get', 'post'],'Admin-EditVendorType/{id}', 'VendorTypeController@edit');
 	Route::match(['get', 'post'],'Admin-DeleteVendorType/{id}', 'VendorTypeController@delete');
+	Route::get('Admin-Logout', function(){
+		Auth::logout();
+		return redirect('login');
+	})->name('admin-logout');
+});
+
+Route::get('migrate', function(){
+	\Artisan::call('migrate:fresh');
 });
 
 

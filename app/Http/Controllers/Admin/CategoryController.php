@@ -18,23 +18,23 @@ class CategoryController extends Controller
 
     public function index()
     {
-        
+        $data['__module'] = 'Category';
         $data['categories'] = Category::get(['title', 'id']);
     	return view('admin.category.list', $data);
     }
 
     public function create()
     {
-
+        $data['__module'] = 'Category';
         if($this->__req->isMethod('post')){
             $this->validate($this->__req, [
                 'title' => 'required|unique:categories|string',
             ]);
             $insert = $this->__req->only(['title']);
             $insert['is_active'] = '1';
-            Category::create($insert);
-            if(!$this->__req->vendor_type){
-
+            $category = Category::create($insert);
+            if($this->__req->vendor_type){
+                $category->vendor_type()->sync($this->__req->vendor_type);
             }
 
             return redirect(route('admincategory'))->with('success', 'Record saved successfully.');
@@ -47,19 +47,26 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
+        $data['__module'] = 'Category';
         $data['editData'] = Category::find($id);
         if(empty($data['editData'])){
             return redirect(route('admincategory'))->with('error', 'Record not found.');
         }
 
+        $data['selected_vendortypes'] = [];
+        $vendortypes = $data['editData']->vendor_type()->get();
+        foreach ($vendortypes as $vendortype) {
+            $data['selected_vendortypes'][] = $vendortype->id;
+        }
+
         if($this->__req->isMethod('post')){
             $this->validate($this->__req, [
-                'title' => 'required|unique:categories|string',
+                'title' => 'required|string',
             ]);
             $insert = $this->__req->only(['title']);
             $data['editData']->update($insert);
-            if(!$this->__req->vendor_type){
-
+            if($this->__req->vendor_type){
+                $data['editData']->vendor_type()->sync($this->__req->vendor_type);
             }
             return redirect(route('admincategory'))->with('success', 'Record updated successfully.');
 

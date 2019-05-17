@@ -11,4 +11,9 @@ class Category extends Model
     use Active, SoftDeletes;
 
     protected $fillable  = ['parent_id', 'title', 'image', 'is_active'];
+
+    public function vendor_type()
+    {
+    	return $this->belongsToMany('App\Master\VendorType', 'category_vendor_type');
+    }
 }
