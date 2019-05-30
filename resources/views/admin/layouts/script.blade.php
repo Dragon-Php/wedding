@@ -1,48 +1,52 @@
 <!-- BEGIN CORE PLUGINS -->
-{{ Html::script('admin/js/jquery.min.js')}}
-{{ Html::script('admin/js/bootstrap.min.js')}}
-{{ Html::script('admin/js/js.cookie.min.js')}}
-{{ Html::script('admin/js/jquery.slimscroll.min.js')}}
-{{ Html::script('admin/js/jquery.blockui.min.js')}}
-{{ Html::script('admin/js/bootstrap-switch.min.js')}}
+{{ Html::script('assets/js/jquery.min.js')}}
+{{ Html::script('assets/js/bootstrap.min.js')}}
+{{ Html::script('assets/js/js.cookie.min.js')}}
+{{ Html::script('assets/js/jquery.slimscroll.min.js')}}
+{{ Html::script('assets/js/jquery.blockui.min.js')}}
+{{ Html::script('assets/js/bootstrap-switch.min.js')}}
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-{{ Html::script('admin/js/moment.min.js')}}
-{{ Html::script('admin/js/daterangepicker.min.js')}}
-{{ Html::script('admin/js/morris.min.js')}}
-{{ Html::script('admin/js/raphael-min.js')}}
+{{ Html::script('assets/js/moment.min.js')}}
+{{ Html::script('assets/js/daterangepicker.min.js')}}
+{{ Html::script('assets/js/morris.min.js')}}
+{{ Html::script('assets/js/raphael-min.js')}}
 
-{{ Html::script('admin/js/jquery.waypoints.min.js')}}
-{{ Html::script('admin/js/jquery.counterup.min.js')}}
-{{ Html::script('admin/js/datatable.js')}}
-{{ Html::script('admin/js/datatables.min.js')}}
-{{ Html::script('admin/js/datatables.bootstrap.js')}}
+{{ Html::script('assets/js/jquery.waypoints.min.js')}}
+{{ Html::script('assets/js/jquery.counterup.min.js')}}
+{{ Html::script('assets/js/datatable.js')}}
+{{ Html::script('assets/js/datatables.min.js')}}
+{{ Html::script('assets/js/datatables.bootstrap.js')}}
 
-{{ Html::script('admin/js/select2.full.min.js')}}
-{{ Html::script('admin/js/jquery.validate.min.js')}}
-{{ Html::script('admin/js/additional-methods.min.js')}}
-{{ Html::script('admin/js/bootstrap-datepicker.min.js')}}
-{{ Html::script('admin/js/ckeditor/ckeditor.js')}}
-{{ Html::script('admin/js/bootstrap-multiselect.js')}}
-{{ Html::script('admin/js/bootstrap-fileinput.js')}}
+{{ Html::script('assets/js/select2.full.min.js')}}
+{{ Html::script('assets/js/jquery.backstretch.min.js')}}
+{{ Html::script('assets/js/jquery.validate.min.js')}}
+{{ Html::script('assets/js/additional-methods.min.js')}}
+{{ Html::script('assets/js/bootstrap-datepicker.min.js')}}
+{{ Html::script('assets/js/ckeditor/ckeditor.js')}}
+{{ Html::script('assets/js/bootstrap-multiselect.js')}}
+{{ Html::script('assets/js/bootstrap-fileinput.js')}}
 
 
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
-{{ Html::script('admin/js/app.min.js')}}
+{{ Html::script('assets/js/app.min.js')}}
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-{{ Html::script('admin/js/dashboard.min.js')}}
-{{ Html::script('admin/js/table-datatables-editable.min.js')}}
-{{ Html::script('admin/js/form-validation.min.js')}}
-{{ Html::script('admin/js/components-bootstrap-multiselect.min.js')}}
+@if(\Request::segment('1') == 'Admin')
+{{ Html::script('assets/js/login.min.js')}}
+@endif
+{{ Html::script('assets/js/dashboard.min.js')}}
+{{ Html::script('assets/js/table-datatables-editable.min.js')}}
+{{ Html::script('assets/js/form-validation.min.js')}}
+{{ Html::script('assets/js/components-bootstrap-multiselect.min.js')}}
 
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
-{{ Html::script('admin/js/layout.min.js')}}
-{{ Html::script('admin/js/demo.min.js')}}
-{{ Html::script('admin/js/quick-sidebar.min.js')}}
-{{ Html::script('admin/js/quick-nav.min.js')}}
+{{ Html::script('assets/js/layout.min.js')}}
+{{ Html::script('assets/js/demo.min.js')}}
+{{ Html::script('assets/js/quick-sidebar.min.js')}}
+{{ Html::script('assets/js/quick-nav.min.js')}}
 <!-- END THEME LAYOUT SCRIPTS -->
 <script>
     $(document).ready(function()

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->bigInteger('contact')->unsigned();
             $table->enum('isAdmin', ['0', '1'])->default('0');
             $table->isActive(['In Active', 'Active'])->default('0');
             $table->rememberToken();
@@ -30,6 +31,7 @@ class CreateUsersTable extends Migration
             array(
                 'name' => 'Admin Kumar',
                 'email' => 'admin@gmail.com',
+                'contact' => '9846464584',
                 'password' => bcrypt('admin123'),
                 'isAdmin'=>'1'
             )

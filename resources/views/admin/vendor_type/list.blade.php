@@ -68,6 +68,7 @@
                                     <th> S. No. </th>
                                     <th> Title </th>
                                     <th> Categories </th>
+                                    <th> Image </th>
                                     <th> Action </th>
                                 </tr>
                             </thead>
@@ -86,6 +87,7 @@
                                     <td> {{$i}} </td>
                                     <td> {{$rowData->title}} </td>
                                     <td> {{trim($cats, ', ')}} </td>
+                                    <td> {{Html::image($rowData->image, '', ['width'=>'100'])}} </td>
                                     
                                     <td>
                                         <a class="btn btn-sm btn-primary" title="Edit" href="{{ url('Admin-EditVendorType/'.$rowData->id)}}"> <i class="fa fa-pencil"></i> </a>

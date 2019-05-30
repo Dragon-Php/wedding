@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data['__module'] = 'Category';
-        $data['categories'] = Category::get(['title', 'id']);
+        $data['categories'] = Category::get(['title', 'id','image']);
     	return view('admin.category.list', $data);
     }
 
@@ -33,6 +33,15 @@ class CategoryController extends Controller
             $insert = $this->__req->only(['title']);
             $insert['is_active'] = '1';
             $category = Category::create($insert);
+            $last_id = $category->id;
+            if($this->__req->image){
+                $image = $this->__req->image;
+                $filename = 'Category_'.$last_id.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/category');
+                $image->move($destinationPath, $filename);
+                $category->update(['image' => 'images/category/'.$filename]);
+            }
+
             if($this->__req->vendor_type){
                 $category->vendor_type()->sync($this->__req->vendor_type);
             }
@@ -60,14 +69,24 @@ class CategoryController extends Controller
         }
 
         if($this->__req->isMethod('post')){
+            // dd($this->__req->all());
             $this->validate($this->__req, [
                 'title' => 'required|string',
             ]);
             $insert = $this->__req->only(['title']);
+            if($this->__req->image){
+                $image = $this->__req->image;
+                $filename = 'Category_'.$id.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/category');
+                $image->move($destinationPath, $filename);
+                $insert['image'] = 'images/category/'.$filename;
+            }
             $data['editData']->update($insert);
             if($this->__req->vendor_type){
                 $data['editData']->vendor_type()->sync($this->__req->vendor_type);
             }
+
+            
             return redirect(route('admincategory'))->with('success', 'Record updated successfully.');
 
         }

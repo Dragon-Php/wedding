@@ -68,6 +68,7 @@
                                     <th> S. No. </th>
                                     <th> Title </th>
                                     <th> Vendor Type </th>
+                                    <th> Image </th>
                                     <th> Action </th>
                                 </tr>
                             </thead>
@@ -86,6 +87,7 @@
                                     <td> {{$i}} </td>
                                     <td> {{$category->title}} </td>
                                     <td> {{trim($vendortype, ', ')}} </td>
+                                    <td> {{Html::image($category->image, '', ['width'=>'100'])}} </td>
                                     
                                     <td>
                                         <a class="btn btn-sm btn-primary" title="Edit" href="{{ url('Admin-EditCategory/'.$category->id)}}"> <i class="fa fa-pencil"></i> </a>

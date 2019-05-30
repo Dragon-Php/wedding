@@ -19,7 +19,7 @@ class VendorTypeController extends Controller
     public function index()
     {
         $data['__module'] = 'Vendor Type';
-        $data['resultData'] = VendorType::get(['title', 'id']);
+        $data['resultData'] = VendorType::get(['title', 'id', 'image']);
     	return view('admin.vendor_type.list', $data);
     }
 
@@ -34,6 +34,16 @@ class VendorTypeController extends Controller
             $insert['is_active'] = '1';
             $insert['slug'] = $this->__req->title;
             $vendor_type = VendorType::create($insert);
+            $last_id = $vendor_type->id;
+            if($this->__req->image){
+                $image = $this->__req->image;
+                $filename = 'VendorType_'.$last_id.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/vendor_type');
+                $image->move($destinationPath, $filename);
+                $vendor_type->update(['image' => 'images/vendor_type/'.$filename]);
+            }
+
+
             if($this->__req->category){
                 $vendor_type->category()->sync($this->__req->category);
             }
@@ -64,7 +74,16 @@ class VendorTypeController extends Controller
                 'title' => 'required|string',
             ]);
             $insert = $this->__req->only(['title']);
+            if($this->__req->image){
+                $image = $this->__req->image;
+                $filename = 'VendorType_'.$id.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/category');
+                $image->move($destinationPath, $filename);
+                $insert['image'] = 'images/category/'.$filename;
+            }
             $data['editData']->update($insert);
+
+
             if($this->__req->category){
                 $data['editData']->category()->sync($this->__req->category);
             }

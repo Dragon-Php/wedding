@@ -11,15 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace'=>'Website'], function(){
+	Route::get('/', 'HomeController@index');
 });
 
-Auth::routes();
+Route::get('Admin', 'AdminLoginController@index');
+Route::post('Admin', 'AdminLoginController@login')->name('admin-login');
+
+/*Auth::routes();*/
 
 // Route::get('Admin-Dashboard', 'HomeController@index')->name('admin_dashboard');
 
-Route::group(['middleware'=>['auth'], 'namespace'=>'Admin'], function(){
+Route::group(['middleware'=>['auth:admin'], 'namespace'=>'Admin'], function(){
 	Route::get('Admin-Dashboard', 'DashboardController@index')->name('admin_dashboard');
 
 
@@ -33,13 +36,13 @@ Route::group(['middleware'=>['auth'], 'namespace'=>'Admin'], function(){
 	Route::match(['get', 'post'],'Admin-EditVendorType/{id}', 'VendorTypeController@edit');
 	Route::match(['get', 'post'],'Admin-DeleteVendorType/{id}', 'VendorTypeController@delete');
 	Route::get('Admin-Logout', function(){
-		Auth::logout();
-		return redirect('login');
+		Auth::guard('admin')->logout();
+		return redirect('Admin');
 	})->name('admin-logout');
 });
 
 Route::get('migrate', function(){
-	\Artisan::call('migrate:fresh');
+	\Artisan::call('migrate:fresh --seed');
 });
 
 
