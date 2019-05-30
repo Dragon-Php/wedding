@@ -124,7 +124,7 @@
                 <h2 class="title">{{Html::image($category->icon, '', ['class'=>'img-fluid', 'width'=>'30'])}} {{$category->title}}</h2>
             </div>
             <div class="col-4 col-sm-4 col-md-3 col-lg-1 col-xl-1">
-                <a href="{{url('Category/'.$category->id)}}" class="view-all">View all</a>
+                <a href="{{url('Category/'.$category->slug)}}" class="view-all">View all</a>
             </div>
         </div>
         <div class="category-gallery">

@@ -34,6 +34,7 @@ class CategoryController extends Controller
             ]);
             $insert = $this->__req->only(['title']);
             $insert['is_active'] = '1';
+            $insert['slug'] = $this->__req->title;
             $category = Category::create($insert);
             $last_id = $category->id;
             if($this->__req->image){
@@ -83,6 +84,7 @@ class CategoryController extends Controller
                 'title' => 'required|string',
             ]);
             $insert = $this->__req->only(['title']);
+            $insert['slug'] = $this->__req->title;
             if($this->__req->image){
                 $image = $this->__req->image;
                 $filename = 'Category_'.$id.'.'.$image->getClientOriginalExtension();
