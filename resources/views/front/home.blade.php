@@ -16,7 +16,7 @@
                 @foreach($categories as $category)
                 <div class="col-6 col-sm-3 col-md-3 co-lg-3 col-xl-3" style="margin-bottom: 15px">
                     <div class="category-img">
-                        <img src="images/wedding.jpg" class="img-fluid">
+                        {{ Html::image($category->image, '', ['class'=>'img-fluid'])}}
                         <div class="category-name">
                             <h5><a href="">{{$category->title}}</a></h5>
                         </div>

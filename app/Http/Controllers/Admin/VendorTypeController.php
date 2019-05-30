@@ -77,9 +77,9 @@ class VendorTypeController extends Controller
             if($this->__req->image){
                 $image = $this->__req->image;
                 $filename = 'VendorType_'.$id.'.'.$image->getClientOriginalExtension();
-                $destinationPath = public_path('/images/category');
+                $destinationPath = public_path('/images/vendor_type');
                 $image->move($destinationPath, $filename);
-                $insert['image'] = 'images/category/'.$filename;
+                $insert['image'] = 'images/vendor_type/'.$filename;
             }
             $data['editData']->update($insert);
 

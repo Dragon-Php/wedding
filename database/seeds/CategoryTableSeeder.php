@@ -15,26 +15,38 @@ class CategoryTableSeeder extends Seeder
             [
             	'title'=>'Weddings', 
             	'is_active' => '1',
+                'image' => 'images/category/Category_1.jpg',
+                'icon' => 'images/category/Icon_1.png',
             	'created_at'=>date('Y-m-d H:i:s')
             ],[
             	'title'=>'Corporate Events', 
             	'is_active' => '1',
+                'image' => 'images/category/Category_2.jpg',
+                'icon' => 'images/category/Icon_1.png',
             	'created_at'=>date('Y-m-d H:i:s')
             ],[
             	'title'=>'Birthdays', 
             	'is_active' => '1',
+                'image' => 'images/category/Category_3.jpg',
+                'icon' => 'images/category/Icon_1.png',
             	'created_at'=>date('Y-m-d H:i:s')
             ],[
             	'title'=>'KidsParty', 
             	'is_active' => '1',
+                'image' => 'images/category/Category_4.jpg',
+                'icon' => 'images/category/Icon_1.png',
             	'created_at'=>date('Y-m-d H:i:s')
             ],[
             	'title'=>'Theme Parties', 
             	'is_active' => '1',
+                'image' => 'images/category/Category_5.jpg',
+                'icon' => 'images/category/Icon_1.png',
             	'created_at'=>date('Y-m-d H:i:s')
             ],[
             	'title'=>'Misceaneous Parties', 
             	'is_active' => '1',
+                'image' => 'images/category/Category_6.jpg',
+                'icon' => 'images/category/Icon_1.png',
             	'created_at'=>date('Y-m-d H:i:s')
             ],
         ]);

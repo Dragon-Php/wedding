@@ -74,7 +74,27 @@
                                         
                                     </div>
                                 </div>
-                            
+                                <div class="form-group ">
+                                    <label class="control-label col-md-3">Icon
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-9">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> 
+                                                {{Html::image($editData->icon, '', ['width'=>'100%'])}}
+                                            </div>
+                                            <div>
+                                                <span class="btn red btn-outline btn-file">
+                                                    <span class="fileinput-new"> Select Png Image </span>
+                                                    <span class="fileinput-exists"> Change </span>
+                                                    <input type="file" name="icon"> </span>
+                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
                                 
                             </div>
                             <div class="form-actions">

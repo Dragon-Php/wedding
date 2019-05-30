@@ -47,6 +47,9 @@
                                     </label>
                                     <div class="col-md-4">
                                         <input type="text" name="title" data-required="1" class="form-control" /> 
+                                        @if($errors->first('title'))
+                                            <font color="red">{{ $errors->first('title')}}</font>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -56,7 +59,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label class="control-label col-md-3">Image</label>
+                                    <label class="control-label col-md-3">Image
+                                        <span class="required"> * </span>
+                                    </label>
                                     <div class="col-md-9">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
@@ -67,7 +72,32 @@
                                                     <input type="file" name="image"> </span>
                                                 <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                             </div>
+                                            
                                         </div>
+                                        @if($errors->first('image'))
+                                            <font color="red">{{ $errors->first('image')}}</font>
+                                        @endif
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-md-3">Icon
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-9">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
+                                            <div>
+                                                <span class="btn red btn-outline btn-file">
+                                                    <span class="fileinput-new"> Select Png Image </span>
+                                                    <span class="fileinput-exists"> Change </span>
+                                                    <input type="file" name="icon"> </span>
+                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                            </div>
+                                        </div>
+                                        @if($errors->first('icon'))
+                                            <font color="red">{{ $errors->first('icon')}}</font>
+                                        @endif
                                         
                                     </div>
                                 </div>

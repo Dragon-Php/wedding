@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('parent_id')->deafult(0)->nullable();
             $table->string('title')->nullable();
             $table->text('image')->nullable();
+            $table->text('icon')->nullable();
             $table->isActive(['In Active', 'Active'])->default('0');
             $table->timestamps();
             $table->softDeletes();

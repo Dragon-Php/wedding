@@ -29,6 +29,8 @@ class CategoryController extends Controller
         if($this->__req->isMethod('post')){
             $this->validate($this->__req, [
                 'title' => 'required|unique:categories|string',
+                'image' => 'required|mimes:jpeg,bmp,png,jpg|max:2048',
+                'icon' => 'required|mimes:png|max:2048',
             ]);
             $insert = $this->__req->only(['title']);
             $insert['is_active'] = '1';
@@ -40,6 +42,13 @@ class CategoryController extends Controller
                 $destinationPath = public_path('/images/category');
                 $image->move($destinationPath, $filename);
                 $category->update(['image' => 'images/category/'.$filename]);
+            }
+            if($this->__req->icon){
+                $icon = $this->__req->icon;
+                $filename = 'Icon_'.$last_id.'.'.$icon->getClientOriginalExtension();
+                $destinationPath = public_path('/images/category');
+                $icon->move($destinationPath, $filename);
+                $category->update(['icon' => 'images/category/'.$filename]);
             }
 
             if($this->__req->vendor_type){
@@ -80,6 +89,13 @@ class CategoryController extends Controller
                 $destinationPath = public_path('/images/category');
                 $image->move($destinationPath, $filename);
                 $insert['image'] = 'images/category/'.$filename;
+            }
+            if($this->__req->icon){
+                $icon = $this->__req->icon;
+                $icon_image = 'Icon_'.$id.'.'.$icon->getClientOriginalExtension();
+                $destinationPath = public_path('/images/category');
+                $icon->move($destinationPath, $icon_image);
+                $insert['icon'] =  'images/category/'.$icon_image;
             }
             $data['editData']->update($insert);
             if($this->__req->vendor_type){

@@ -10,7 +10,7 @@ class Category extends Model
 {
     use Active, SoftDeletes;
 
-    protected $fillable  = ['parent_id', 'title', 'image', 'is_active'];
+    protected $fillable  = ['parent_id', 'title', 'image', 'is_active', 'icon'];
 
     public function vendor_type()
     {

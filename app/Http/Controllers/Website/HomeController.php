@@ -14,4 +14,9 @@ class HomeController extends Controller
     	$data['categories'] = Category::all();
     	return view('front.home', $data);
     }
+    public function categories()
+    {
+    	$data['categories'] = Category::all();
+    	return view('front.category', $data);
+    }
 }
