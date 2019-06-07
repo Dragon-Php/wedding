@@ -19,6 +19,7 @@
             });
         });
     </script>
+    <meta name="__token" data-value="{{ csrf_token()}}" >
 
 </head>
 
@@ -99,7 +100,8 @@
 
 
             @include('front.login.user')
-            @include('front.login.vendor')
+            <!-- ---------------------- Vendor signin----------- -->
+            {{-- @include('front.login.vendor') --}}
 
         </div>
     </div>
@@ -110,10 +112,9 @@
         $(document).ready(function() {
             $("#new-signup").click(function() {
                 $("span.signup-div").hide();
-            });
-            $("#new-signup").click(function() {
                 $("span.new-signup-div").show();
             });
+            
         });
     </script>
     <script type="text/javascript">
@@ -169,8 +170,16 @@
     </script>
 
     <script>
-        function myFunction() {
-            var x = document.getElementById("myInput");
+        function showUserLoginPassword() {
+            var x = document.getElementById("userloginpassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+        function showUserRegPassword() {
+            var x = document.getElementById("userregpassword");
             if (x.type === "password") {
                 x.type = "text";
             } else {
@@ -178,6 +187,8 @@
             }
         }
     </script>
+
+    {{ Html::script('js/user.js')}}
 
 </body>
 

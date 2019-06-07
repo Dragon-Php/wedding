@@ -19,6 +19,8 @@ Route::group(['namespace'=>'Website'], function(){
 Route::get('Admin', 'AdminLoginController@index');
 Route::post('Admin', 'AdminLoginController@login')->name('admin-login');
 
+Route::post('UserRegistration', 'AjaxController@user_reg')->name('user_register');
+
 /*Auth::routes();*/
 
 // Route::get('Admin-Dashboard', 'HomeController@index')->name('admin_dashboard');

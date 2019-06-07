@@ -24,14 +24,15 @@
 
                 <span class="signup-div">
                     <div class="form-group"> 
-                        <input type="email" class="form-control" placeholder="Email*">
+                        <input type="email" class="form-control"  id="userloginemail" placeholder="Email*">
                     </div>
 
                     <div class="form-group show-pw-div"> 
-                        <input type="password" class="form-control" value="FakePSW" id="myInput" placeholder="password*">
-                        <input type="checkbox" onclick="myFunction()">
+                        <input type="password" class="form-control" value="" id="userloginpassword" placeholder="password*">
+                        <input type="checkbox" onclick="showUserLoginPassword()">
                         <label for="show"></label>
                     </div>
+                    {{--<a href="profile-info.html" class="custom-button">Sign In</a> --}}
                     <a href="profile-info.html" class="custom-button">Sign In</a>
                     <ul class="signin-text">
                         <li><span class="text-left">Forgot Password?</span></li>
@@ -40,32 +41,34 @@
 
                 </span>
 
-                <span class="new-signup-div" style="display: none;">
+                <span class="new-signup-div" data-url="{{route('user_register')}}" style="display: none;">
+                    <div class="success"></div>
                     <div class="form-group"> 
-                        <input type="text" class="form-control" placeholder="Name*">
+                        <input type="text" class="form-control" id="userregname" placeholder="Name*">
                     </div>
 
                     <div class="form-group"> 
-                        <input type="number" class="form-control" placeholder="Enter your mobile number*">
+                        <input type="number" class="form-control" id="userregcontact" placeholder="Enter your mobile number*">
                     </div>
 
                     <div class="form-group"> 
-                        <input type="email" class="form-control" placeholder="Email*">
+                        <input type="email" class="form-control" id="userregemail" placeholder="Email*">
                     </div>
 
                     <div class="form-group show-pw-div"> 
-                        <input type="password" class="form-control" value="FakePSW" id="myInput" placeholder="password*">
-                        <input type="checkbox" onclick="myFunction()">
+                        <input type="password" class="form-control"  value="" id="userregpassword" placeholder="password*">
+                        <input type="checkbox" onclick="showUserRegPassword()">
                         <label for="show"></label>
 
-                    <a href="profile-info.html" class="custom-button">Sign In</a>
+                    {{-- <a href="profile-info.html" class="custom-button">Sign Up</a> --}}
+                    <a href="#" class="custom-button">Sign Up</a>
                     <ul class="signin-text">
                         <li>
                             <span class="text-left">Forgot Password?</span>
                         </li>
                         <li>
-                            <span class="text-right">New to Wedding event? 
-                                <a id="signup">Sign up</a>
+                            <span class="text-right">Existing customer? 
+                                <a id="signup">Sign In</a>
                             </span>
                         </li>
                     </ul>
@@ -87,3 +90,6 @@
     </div>
 
 </div>
+<script type="text/javascript">
+    
+</script>
