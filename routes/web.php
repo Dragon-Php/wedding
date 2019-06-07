@@ -20,6 +20,7 @@ Route::get('Admin', 'AdminLoginController@index');
 Route::post('Admin', 'AdminLoginController@login')->name('admin-login');
 
 Route::post('UserRegistration', 'AjaxController@user_reg')->name('user_register');
+Route::post('UserLogin', 'AjaxController@user_login')->name('user_login');
 
 /*Auth::routes();*/
 
@@ -43,6 +44,11 @@ Route::group(['middleware'=>['auth:admin'], 'namespace'=>'Admin'], function(){
 		return redirect('Admin');
 	})->name('admin-logout');
 });
+
+Route::get('UserLogout', function(){
+	Auth::logout();
+	return redirect('/');
+})->name('user_logout');
 
 Route::get('migrate', function(){
 	\Artisan::call('migrate:fresh --seed');

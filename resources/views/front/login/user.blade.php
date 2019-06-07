@@ -22,7 +22,8 @@
                 <p class="text-center">We are not going to post anything without your permission</p>
                 <hr class="hr-text">
 
-                <span class="signup-div">
+                <span class="signup-div customer_login_form" data-url="{{route('user_login')}}">
+                    <div class="login_success"></div>
                     <div class="form-group"> 
                         <input type="email" class="form-control"  id="userloginemail" placeholder="Email*">
                     </div>
@@ -33,7 +34,7 @@
                         <label for="show"></label>
                     </div>
                     {{--<a href="profile-info.html" class="custom-button">Sign In</a> --}}
-                    <a href="profile-info.html" class="custom-button">Sign In</a>
+                    <a href="#" class="custom-button customer_login">Sign In</a>
                     <ul class="signin-text">
                         <li><span class="text-left">Forgot Password?</span></li>
                         <li><span class="text-right">New to Wedding event?<a id="new-signup">Sign up</a></span></li>
@@ -61,7 +62,7 @@
                         <label for="show"></label>
 
                     {{-- <a href="profile-info.html" class="custom-button">Sign Up</a> --}}
-                    <a href="#" class="custom-button">Sign Up</a>
+                    <a href="#" class="custom-button user_newregister">Sign Up</a>
                     <ul class="signin-text">
                         <li>
                             <span class="text-left">Forgot Password?</span>

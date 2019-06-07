@@ -3,10 +3,14 @@ var userregcontact = $('#userregcontact');
 var userregemail = $('#userregemail');
 var userregpassword = $('#userregpassword');
 
-$('.custom-button').click(function(){
+
+var userloginemail = $('#userloginemail');
+var userloginpassword = $('#userloginpassword');
+
+$('.user_newregister').click(function(){
 	var error = false;
 	$('.error_reg').remove();
-	$('.success').remove();
+	$('.success').hide();
 	if(userregname.val() == ''){
 		error = true;
 		userregname.css('border-color', 'red');
@@ -38,9 +42,15 @@ $('.custom-button').click(function(){
 			success : function(result){
 				var obj = JSON.parse(result);
 				if(obj.status == '1'){
+					console.log(obj.msg);
 					$('.success').html(obj.msg);
+					$('.success').show();
 					$('.success').css('color', 'green');
-
+					$('.success').css('margin-left', '10%');
+					userregname.val('');
+					userregcontact.val('');
+					userregemail.val('');
+					userregpassword.val('');
 				}
 				if(obj.status == '2'){
 					userregemail.after('<font class="error_reg" style="margin-left: 10%;">'+obj.msg+'.</font>');
@@ -84,4 +94,49 @@ userregemail.keypress(function(e){
 	if(Key>-1){
 		e.preventDefault();
 	}
+});
+
+$('.customer_login').click(function(){
+	var error = false;
+	$('.error_login').remove();
+	$('.login_success').hide();
+	
+	if(userloginemail.val() == ''){
+		error = true;
+		userloginemail.css('border-color', 'red');
+		userloginemail.after('<font class="error_login" style="margin-left: 10%;">Email is required.</font>');
+	}
+	if(userloginpassword.val() == ''){
+		error = true;
+		userloginpassword.css('border-color', 'red');
+		userloginpassword.after('<font class="error_login" style="margin-left: 10%;">Password is required.</font>');
+	}
+
+	
+
+	if(!error){
+		$.ajax({
+			url : $('.customer_login_form').attr('data-url'),
+			type:'POST',
+			data : {  email : userloginemail.val(), password : userloginpassword.val(), _token:$('meta[name=__token]').attr('data-value') },
+			success : function(result){
+				var obj = JSON.parse(result);
+				if(obj.status == '1'){
+					$('.login_success').html(obj.msg);
+					$('.login_success').css('color', 'green');
+					$('.login_success').css('margin-left', '10%');
+					window.location.reload();
+				}
+				if(obj.status == '2'){
+					$('.login_success').html(obj.msg);
+					$('.login_success').css('color', 'red');
+					$('.login_success').css('margin-left', '10%');
+				}
+				$('.error_login').css('color', 'red');
+
+			}
+		})
+	}
+
+	$('.error_login').css('color', 'red');
 });
