@@ -14,6 +14,7 @@
 Route::group(['namespace'=>'Website'], function(){
 	Route::get('/', 'HomeController@index');
 	Route::get('All-Categories', 'HomeController@categories')->name('categories');
+	Route::get('Category/{slug}', 'HomeController@alleventtype');
 });
 
 Route::get('Admin', 'AdminLoginController@index');

@@ -16,7 +16,12 @@ class HomeController extends Controller
     }
     public function categories()
     {
-    	$data['categories'] = Category::all();
-    	return view('front.category', $data);
+        $data['categories'] = Category::all();
+        return view('front.category', $data);
+    }
+    public function alleventtype($slug)
+    {
+    	$data['categories'] = Category::where('slug', $slug)->first();
+    	return view('front.event_type', $data);
     }
 }
