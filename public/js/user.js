@@ -72,7 +72,6 @@ $('.user_newregister').click(function(){
 });
 
 userregname.keypress(function(e){
-	// var disabled_key = [33, 35, 36, 37, 94, 38, 123, 125,91,93, 42, 40, 41, 95, 47, 43 ,63];
 	var disabled_key = [33, 35, 36, 37, 94, 38, 123, 125,91,93, 42, 40, 41, 95, 47, 43 ,63, 64];
 	var Key = disabled_key.indexOf(e.which);
 	if(Key>-1){
@@ -80,7 +79,6 @@ userregname.keypress(function(e){
 	}
 });
 userregcontact.keypress(function(e){
-	// var disabled_key = [33, 35, 36, 37, 94, 38, 123, 125,91,93, 42, 40, 41, 95, 47, 43 ,63];
 	var disabled_key = [33, 35, 36, 37, 94, 38, 123, 125,91,93, 42, 40, 41, 95, 47, 43 ,63, 64];
 	var Key = disabled_key.indexOf(e.which);
 	if(Key>-1){
@@ -140,3 +138,20 @@ $('.customer_login').click(function(){
 
 	$('.error_login').css('color', 'red');
 });
+
+function showUserLoginPassword() {
+    var x = document.getElementById("userloginpassword");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+function showUserRegPassword() {
+    var x = document.getElementById("userregpassword");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}

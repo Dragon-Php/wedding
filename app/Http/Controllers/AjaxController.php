@@ -36,13 +36,55 @@ class AjaxController extends Controller
         
 
     }
+
+    public function vendor_reg()
+    {
+        $user = User::where('email', $this->__req->email)->first();
+
+        if(empty($user)){
+            $insert = [
+                'name' => $this->__req->brand_name,
+                'city' => $this->__req->vendor_city,
+                'contact' => $this->__req->contact,
+                'email' => $this->__req->email,
+                'password' => bcrypt($this->__req->password),
+            ];
+            $vendor = User::create($insert);
+            if($vendor){
+                if($this->__req->vendor_cateory != ''){
+                    $category = explode(',', $this->__req->vendor_cateory);
+                    $vendor->category()->sync($category);
+                }
+                echo json_encode(['status'=>'1', 'msg'=>'Thankyou for being our member. Please login.']);
+            } else {
+                echo json_encode(['status'=>'0', 'msg'=>'Something went wrong please try again.']);
+            }
+        } else {
+            echo json_encode(['status'=>'2', 'msg'=>'This email is already taken']);
+        }
+        
+
+    }
     public function user_login()
+    {
+        $credentials = [
+            'email' => $this->__req->email,
+            'password' => $this->__req->password,
+        ];
+        if(Auth::attempt($credentials)){
+            echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
+        } else {
+            echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
+        }
+    }
+
+    public function vendor_login()
     {
 		$credentials = [
 		    'email' => $this->__req->email,
 		    'password' => $this->__req->password,
     	];
-        if(Auth::attempt($credentials)){
+        if(Auth::guard('vendor')->attempt($credentials)){
             echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
         } else {
             echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);

@@ -115,22 +115,22 @@
         </div>
     </div>
 </section>
-@foreach($categories as $category)
+
 
 <section class="vendor-list">
     <div class="container-fluid">
         <div class="row">
             <div class="col-8 col-sm-8 col-md-9 col-lg-11 col-xl-11">
-                <h2 class="title">{{Html::image($category->icon, '', ['class'=>'img-fluid', 'width'=>'30'])}} {{$category->title}}</h2>
+                <h2 class="title">{{Html::image($category_->icon, '', ['class'=>'img-fluid', 'width'=>'30'])}} {{$category_->title}}</h2>
             </div>
             <div class="col-4 col-sm-4 col-md-3 col-lg-1 col-xl-1">
-                <a href="{{url('Category/'.$category->slug)}}" class="view-all">View all</a>
+                <a href="{{url('Category/'.$category_->slug)}}" class="view-all">View all</a>
             </div>
         </div>
         <div class="category-gallery">
             <div class="row">
             	@php 
-					$vendor_types = $category->vendor_type()->limit(4)->get();
+					
 				@endphp
 				@foreach($vendor_types as $vendor_type)
                 <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
@@ -162,6 +162,6 @@
     </div>
 
 </section>
-@endforeach
+
 
 @endsection

@@ -13,61 +13,62 @@
 
             </div>
             <form>
-                <span class="customer-signup">
+                <span class="customer-signup vendor_login" data-url="{{ route('vendor_login')}}">
+                    <div class="vendor_loginsuccess"></div>
                     <div class="form-group"> 
-                        <input type="email" class="form-control" placeholder="Email*">
+                        <input type="email" id="vendorloginemail" class="form-control" placeholder="Email*">
                     </div>
 
                     <div class="form-group show-pw-div"> 
-                        <input type="password" class="form-control" value="FakePSW" id="myInput" placeholder="password*">
-                        <input type="checkbox" onclick="myFunction()">
+                        <input type="password" class="form-control" id="vendorloginpassword" placeholder="password*">
+                        <input type="checkbox" onclick="showVendorLoginPassword()">
                         <label for="show"></label>
                     </div>
-                    <input type="submit" class="custom-button" value="Sign In" style="background-color: #0069d9;">
+                    <a type="submit" class="custom-button vendorlogin" style="background-color: #0069d9;">Sign In</a>
                     <ul class="signin-text">
                         <li>
                             <span class="text-left">Forgot Password?</span>
                         </li>
                         <li>
                             <span class="text-right">New to Wedding event? 
-                                <button id="customer-new-signup">Sign up</button>
+                                <a id="customer-new-signup">Sign up</a>
                             </span>
                         </li>
                     </ul>
 
                 </span>
-                <span class="customer-new-signup" style="display: none;">
+                <span class="customer-new-signup vendor_signup" data-url="{{ route('vendor_register')}}"  style="display: none;">
+                    <div class="vendor_regsuccess"></div>
                     <div class="form-group"> 
-                        <input type="text" class="form-control" placeholder="Brand name*">
+                        <input type="text" class="form-control" id="brand_name" placeholder="Brand name*">
                     </div>
                     <div class="form-group"> 
-                        <input type="text" Autocomplete id="searchTextField" class="form-control" placeholder="City (choose your base city here)*">
+                        <input type="text" Autocomplete id="vendor_city" class="form-control" placeholder="City (choose your base city here)*">
                     </div>
+                    @php
+
+                    $vendor_category = \App\Master\Category::all()->pluck('title', 'id');
+                    @endphp
                     <div class="form-group"> 
-                        <select class="form-control">
-                            <option>Select vendor type*</option>
-                            <option>Select vendor type</option>
-                            <option>Select vendor type</option>
-                            <option>Select vendor type</option>
-                        </select>
+                        {{ Form::select('vendor_category[]', $vendor_category, '',['class'=>'form-control', 'placeholder'=>'Select Category', 'multiple'=>'multiple', 'style'=>'height:100px', 'id'=>'vendor_cateory'])}}
                     </div>
 
                     <div class="form-group"> 
-                        <input type="email" class="form-control" placeholder="Email*">
+                        <input type="email" class="form-control" id="vendor_reg_email" placeholder="Email*">
                     </div>
                     <div class="form-group"> 
-                        <input type="number" class="form-control" placeholder="Enter your mobile number*">
+                        <input type="number" class="form-control" id="vendor_reg_mobile" placeholder="Enter your mobile number*">
                     </div>
 
                     <div class="form-group show-pw-div"> 
-                        <input type="password" class="form-control" value="FakePSW" id="myInput" placeholder="password*">
-                        <input type="checkbox" onclick="myFunction()">
+                        <input type="password" class="form-control" value="" id="vendorregpassword" placeholder="password*">
+                        <input type="checkbox" onclick="showVendorRegPassword()">
                         <label for="show"></label>
                     </div>
-                    <input type="submit" class="custom-button" value="Sign In" style="background-color: #0069d9;">
+                    <a type="submit" class="custom-button" id="vendor_signup" style="background-color: #0069d9;">Sign Up</a>
                     <ul class="signin-text">
                         <li><span class="text-left">Forgot Password?</span></li>
-                        <li><span class="text-right">New to Wedding event? <button id="customer-signup">Sign up</button></span></li>
+                        <li><span class="text-right">New to Wedding event? <a id="customer-signup">Sign in</a></span></li>
                     </ul>
 
                 </span>

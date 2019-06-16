@@ -18,7 +18,7 @@
                     <div class="category-img">
                         {{ Html::image($category->image, '', ['class'=>'img-fluid'])}}
                         <div class="category-name">
-                            <h5><a href="">{{$category->title}}</a></h5>
+                            <h5><a href="{{ url('Category/'.$category->slug)}}">{{$category->title}}</a></h5>
                         </div>
                     </div>
                 </div>

@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->bigInteger('contact')->unsigned();
+            $table->string('city', 191)->nullable();
             $table->enum('isAdmin', ['0', '1'])->default('0');
             $table->isActive(['In Active', 'Active'])->default('0');
             $table->rememberToken();

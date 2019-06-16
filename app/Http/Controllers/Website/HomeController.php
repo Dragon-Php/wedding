@@ -21,7 +21,10 @@ class HomeController extends Controller
     }
     public function alleventtype($slug)
     {
-    	$data['categories'] = Category::where('slug', $slug)->first();
+        $data['categories'] = Category::all();
+    	$category = Category::where('slug', $slug)->first();
+        $data['vendor_types'] = $category->vendor_type()->get();
+        $data['category_']  = $category ;
     	return view('front.event_type', $data);
     }
 }

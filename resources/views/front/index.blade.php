@@ -4,21 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Wedding</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
     {{ Html::style('css/bootstrap.min.css')}}
     {{ Html::style('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}
     {{ Html::style('css/style.css')}}
     {{ Html::style('css/responsive.css')}}
     {{ Html::script('js/jquery.min.js')}}
-    <script>
-        $(document).ready(function() {
-            $("#hide").click(function() {
-                $("#seach-box").hide("slide");
-            });
-            $("#show").click(function() {
-                $("#seach-box").show("slow");
-            });
-        });
-    </script>
+    
     <meta name="__token" data-value="{{ csrf_token()}}" >
 
 </head>
@@ -101,95 +93,29 @@
 
             @include('front.login.user')
             <!-- ---------------------- Vendor signin----------- -->
-            {{-- @include('front.login.vendor') --}}
+            @include('front.login.vendor')
 
         </div>
     </div>
 
     <a href="#top" class="back-top"><i class="fas fa-angle-up"></i></a>
     <!-- ------------ customer login-------------- -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#new-signup").click(function() {
-                $("span.signup-div").hide();
-                $("span.new-signup-div").show();
-            });
-            
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#signup").click(function() {
-                $("span.new-signup-div").hide();
-            });
-            $("#signup").click(function() {
-                $("span.signup-div").show();
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#customer-new-signup").click(function() {
-                $("span.customer-signup").hide();
-            });
-            $("#customer-new-signup").click(function() {
-                $("span.customer-new-signup").show();
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#customer-signup").click(function() {
-                $("span.customer-new-signup").hide();
-            });
-            $("#customer-signup").click(function() {
-                $("span.customer-signup").show();
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#customer-login").click(function() {
-                $("#vendor-div").hide();
-            });
-            $("#customer-login").click(function() {
-                $("#customer-div").show();
-            });
-        });
-    </script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#vendor-login").click(function() {
-                $("#customer-div").hide();
-            });
-            $("#vendor-login").click(function() {
-                $("#vendor-div").show();
-            });
-        });
-    </script>
-
-    <script>
-        function showUserLoginPassword() {
-            var x = document.getElementById("userloginpassword");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-        function showUserRegPassword() {
-            var x = document.getElementById("userregpassword");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-    </script>
-
+    {{ Html::script('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')}}
+    {{ Html::script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js')}}
+    {{ Html::script('js/web.js')}}
     {{ Html::script('js/user.js')}}
-
+    {{ Html::script('js/vendor.js')}}
+    <script>
+        $(document).ready(function() {
+            $("#hide").click(function() {
+                $("#seach-box").hide("slide");
+            });
+            $("#show").click(function() {
+                $("#seach-box").show("slow");
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -23,6 +23,10 @@ Route::post('Admin', 'AdminLoginController@login')->name('admin-login');
 Route::post('UserRegistration', 'AjaxController@user_reg')->name('user_register');
 Route::post('UserLogin', 'AjaxController@user_login')->name('user_login');
 
+
+Route::post('VendorRegistration', 'AjaxController@vendor_reg')->name('vendor_register');
+Route::post('VendorLogin', 'AjaxController@vendor_login')->name('vendor_login');
+
 /*Auth::routes();*/
 
 // Route::get('Admin-Dashboard', 'HomeController@index')->name('admin_dashboard');
