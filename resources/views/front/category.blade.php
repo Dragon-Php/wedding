@@ -55,7 +55,7 @@
                     <ul class="banner-form">
                         <li>
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control">
                                     <option>No of Guests</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -66,7 +66,7 @@
                         </li>
                         <li>
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control">
                                     <option>Price per Plate</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -77,7 +77,7 @@
                         </li>
                         <li>
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control">
                                     <option>Venue Type</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -88,7 +88,7 @@
                         </li>
                         <li>
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control">
                                     <option>Space Preference</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -99,7 +99,7 @@
                         </li>
                         <li>
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control">
                                     <option>Average Rating</option>
                                     <option>2</option>
                                     <option>3</option>
