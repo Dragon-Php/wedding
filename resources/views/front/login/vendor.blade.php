@@ -47,10 +47,10 @@
                     </div>
                     @php
 
-                    $vendor_category = \App\Master\Category::all()->pluck('title', 'id');
+                    $vendor_type = \App\Master\VendorType::all()->pluck('title', 'id');
                     @endphp
                     <div class="form-group"> 
-                        {{ Form::select('vendor_category[]', $vendor_category, '',['class'=>'form-control', 'placeholder'=>'Select Category', 'multiple'=>'multiple', 'style'=>'height:100px', 'id'=>'vendor_cateory'])}}
+                        {{ Form::select('vendor_type[]', $vendor_type, '',['class'=>'form-control', 'placeholder'=>'Select Category', 'multiple'=>'multiple', 'style'=>'height:100px', 'id'=>'vendor_cateory'])}}
                     </div>
 
                     <div class="form-group"> 

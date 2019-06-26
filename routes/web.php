@@ -50,10 +50,19 @@ Route::group(['middleware'=>['auth:admin'], 'namespace'=>'Admin'], function(){
 	})->name('admin-logout');
 });
 
+Route::group(['middleware'=>['auth:vendor'], 'namespace'=>'Vendor'], function(){
+	Route::get('Profile', 'ProfileController@index')->name('vendor_profile');
+});
+
 Route::get('UserLogout', function(){
 	Auth::logout();
 	return redirect('/');
 })->name('user_logout');
+
+Route::get('VendorLogout', function(){
+	Auth::guard('vendor')->logout();
+	return redirect('/');
+})->name('vendor_logout');
 
 Route::get('migrate', function(){
 	\Artisan::call('migrate:fresh --seed');

@@ -43,21 +43,43 @@
                             </div>
                         </form>
                     </li>
-                    @guest
+                    @guest('web')
+                        @guest('vendor')
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="#">
+                                <input type="button" value="Login" data-toggle="modal" data-target="#exampleModalCenter">
+                            </a>
+                        </li>
+                        @endguest
+                    @endguest
+
+                    
+                    
+                    @auth('vendor')
                     <li class="nav-item">
 
-                        <a class="nav-link" href="#">
-                            <input type="button" value="Login" data-toggle="modal" data-target="#exampleModalCenter">
+                        <a class="nav-link btn"  href="{{route('vendor_profile')}}">
+                            <input type="button" value="Profile">
                         </a>
                     </li>
-                    @else
+                    <li class="nav-item">
+
+                        <a class="nav-link btn"  href="{{route('vendor_logout')}}">
+                            <input type="button" value="Logout">
+                        </a>
+                    </li>
+                    @endauth
+                    @auth('web')
                     <li class="nav-item">
 
                         <a class="nav-link btn"  href="{{route('user_logout')}}">
                             <input type="button" value="Logout">
                         </a>
                     </li>
-                    @endguest
+                    @endauth
+
+
                 </ul>
             </div>
         </nav>
