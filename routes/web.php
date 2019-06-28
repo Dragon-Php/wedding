@@ -27,6 +27,10 @@ Route::post('UserLogin', 'AjaxController@user_login')->name('user_login');
 Route::post('VendorRegistration', 'AjaxController@vendor_reg')->name('vendor_register');
 Route::post('VendorLogin', 'AjaxController@vendor_login')->name('vendor_login');
 
+Route::get('login', function(){
+	return redirect('/');
+})->name('login');
+
 /*Auth::routes();*/
 
 // Route::get('Admin-Dashboard', 'HomeController@index')->name('admin_dashboard');
@@ -34,6 +38,11 @@ Route::post('VendorLogin', 'AjaxController@vendor_login')->name('vendor_login');
 Route::group(['middleware'=>['auth:admin'], 'namespace'=>'Admin'], function(){
 	Route::get('Admin-Dashboard', 'DashboardController@index')->name('admin_dashboard');
 
+
+	Route::get('Admin-Country', 'CountryController@index')->name('admincountry');
+	Route::match(['get', 'post'],'Admin-AddCountry', 'CountryController@create')->name('admin_addcountry');
+	Route::match(['get', 'post'],'Admin-EditCountry/{id}', 'CountryController@edit');
+	Route::match(['get', 'post'],'Admin-DeleteCountry/{id}', 'CountryController@delete');
 
 	Route::get('Admin-Category', 'CategoryController@index')->name('admincategory');
 	Route::match(['get', 'post'],'Admin-AddCategory', 'CategoryController@create')->name('admin_addcategory');

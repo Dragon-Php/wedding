@@ -21,6 +21,26 @@
             <li class="heading">
                 <h3 class="uppercase">System</h3>
             </li>
+            <li class="nav-item  {{ \Request::segment(1) == 'Admin-Country' || \Request::segment(1) == 'Admin-AddCountry' || \Request::segment(1) == 'Admin-EditCountry' ? 'active' : ''}}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">Country</span>
+                    <span class="arrow {{ \Request::segment(1) == 'Admin-Country' || \Request::segment(1) == 'Admin-AddCountry' || \Request::segment(1) == 'Admin-EditCountry' ? 'open' : ''}}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  {{ \Request::segment(1) == 'Admin-Country' ? 'active' : ''}} ">
+                        <a href="{{ route('admincountry')}}" class="nav-link ">
+                            <span class="title">List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  {{ \Request::segment(1) == 'Admin-AddCountry' ? 'active' : ''}} ">
+                        <a href="{{route('admin_addcountry')}}" class="nav-link ">
+                            <span class="title">Add</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="nav-item  {{ \Request::segment(1) == 'Admin-Category' || \Request::segment(1) == 'Admin-AddCategory' || \Request::segment(1) == 'Admin-EditCategory' ? 'active' : ''}}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-tag"></i>
