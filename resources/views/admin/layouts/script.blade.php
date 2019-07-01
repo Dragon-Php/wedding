@@ -77,3 +77,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-W276BJ');</script>
 <!-- End -->
+
+<script type="text/javascript">
+  function getState(country_id){
+    var state = '<option value="">Select State</option>';
+    if(country_id != ''){
+      $.ajax({
+        url : '{{url("api/states/")}}/'+country_id,
+        success : function(result){
+          $('.states').html(result);
+        }
+      });
+    } else {
+      $('.states').html(state);
+    } 
+
+
+  }
+</script>

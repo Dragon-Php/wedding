@@ -44,6 +44,16 @@ Route::group(['middleware'=>['auth:admin'], 'namespace'=>'Admin'], function(){
 	Route::match(['get', 'post'],'Admin-EditCountry/{id}', 'CountryController@edit');
 	Route::match(['get', 'post'],'Admin-DeleteCountry/{id}', 'CountryController@delete');
 
+	Route::get('Admin-State', 'StateController@index')->name('adminstate');
+	Route::match(['get', 'post'],'Admin-AddState', 'StateController@create')->name('admin_addstate');
+	Route::match(['get', 'post'],'Admin-EditState/{id}', 'StateController@edit');
+	Route::match(['get', 'post'],'Admin-DeleteState/{id}', 'StateController@delete');
+
+	Route::get('Admin-City', 'CityController@index')->name('admincity');
+	Route::match(['get', 'post'],'Admin-AddCity', 'CityController@create')->name('admin_addcity');
+	Route::match(['get', 'post'],'Admin-EditCity/{id}', 'CityController@edit');
+	Route::match(['get', 'post'],'Admin-DeleteCity/{id}', 'CityController@delete');
+
 	Route::get('Admin-Category', 'CategoryController@index')->name('admincategory');
 	Route::match(['get', 'post'],'Admin-AddCategory', 'CategoryController@create')->name('admin_addcategory');
 	Route::match(['get', 'post'],'Admin-EditCategory/{id}', 'CategoryController@edit');

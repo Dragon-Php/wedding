@@ -40,6 +40,44 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item  {{ \Request::segment(1) == 'Admin-State' || \Request::segment(1) == 'Admin-AddState' || \Request::segment(1) == 'Admin-EditState' ? 'active' : ''}}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">State</span>
+                    <span class="arrow {{ \Request::segment(1) == 'Admin-State' || \Request::segment(1) == 'Admin-AddState' || \Request::segment(1) == 'Admin-EditState' ? 'open' : ''}}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  {{ \Request::segment(1) == 'Admin-State' ? 'active' : ''}} ">
+                        <a href="{{ route('adminstate')}}" class="nav-link ">
+                            <span class="title">List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  {{ \Request::segment(1) == 'Admin-AddState' ? 'active' : ''}} ">
+                        <a href="{{route('admin_addstate')}}" class="nav-link ">
+                            <span class="title">Add</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item  {{ \Request::segment(1) == 'Admin-City' || \Request::segment(1) == 'Admin-AddCity' || \Request::segment(1) == 'Admin-EditCity' ? 'active' : ''}}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">City</span>
+                    <span class="arrow {{ \Request::segment(1) == 'Admin-City' || \Request::segment(1) == 'Admin-AddCity' || \Request::segment(1) == 'Admin-EditCity' ? 'open' : ''}}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  {{ \Request::segment(1) == 'Admin-City' ? 'active' : ''}} ">
+                        <a href="{{ route('admincity')}}" class="nav-link ">
+                            <span class="title">List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  {{ \Request::segment(1) == 'Admin-AddCity' ? 'active' : ''}} ">
+                        <a href="{{route('admin_addcity')}}" class="nav-link ">
+                            <span class="title">Add</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             <li class="nav-item  {{ \Request::segment(1) == 'Admin-Category' || \Request::segment(1) == 'Admin-AddCategory' || \Request::segment(1) == 'Admin-EditCategory' ? 'active' : ''}}">
                 <a href="javascript:;" class="nav-link nav-toggle">

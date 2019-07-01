@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 
+use App\Master\Country;
+use App\Master\State;
+
 class AjaxController extends Controller
 {
 	public  $__req;
@@ -88,6 +91,18 @@ class AjaxController extends Controller
             echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
         } else {
             echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
+        }
+    }
+
+    public function states($country_id)
+    {
+        $country = Country::find($country_id);
+        echo '<option value="">Select State</option>';
+        if(!empty($country)){
+            $states = $country->states()->get();
+            foreach ($states as $state) {
+                echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+            }
         }
     }
 }
