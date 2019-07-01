@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Master\Category', 'category_vendor', 'vendor_id');
     }
+
+    public function profile()
+    {
+        return $this->hasOne('App\Master\UserProfile');
+    }
 }

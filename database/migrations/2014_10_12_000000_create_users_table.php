@@ -29,13 +29,25 @@ class CreateUsersTable extends Migration
         });
 
         DB::table('users')->insert(
-            array(
-                'name' => 'Admin Kumar',
-                'email' => 'admin@gmail.com',
-                'contact' => '9846464584',
-                'password' => bcrypt('admin123'),
-                'isAdmin'=>'1'
-            )
+            [
+                array(
+                    'name' => 'Admin Kumar',
+                    'email' => 'admin@gmail.com',
+                    'contact' => '9846464584',
+                    'password' => bcrypt('admin123'),
+                    'isAdmin'=>'1',
+                    'is_active'=>'1'
+                ),
+    
+                array(
+                    'name' => 'User Kumar',
+                    'email' => 'user@gmail.com',
+                    'contact' => '9846464584',
+                    'password' => bcrypt('admin123'),
+                    'isAdmin'=>'0',
+                    'is_active'=>'1'
+                )
+            ]
         );
     }
 

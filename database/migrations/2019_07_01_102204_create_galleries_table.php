@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVendorTypesTable extends Migration
+class CreateGalleriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateVendorTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendor_types', function (Blueprint $table) {
+        Schema::create('galleries', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->text('image')->nullable();
-            $table->isActive(['In Active', 'Active'])->default('0');
+            $table->integer('user_id')->unsigned();
+            $table->string('title')->nullable();
+            $table->isActive(['In Active', 'Active'])->default('1');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateVendorTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendor_types');
+        Schema::dropIfExists('galleries');
     }
 }

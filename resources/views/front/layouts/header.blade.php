@@ -71,12 +71,18 @@
                     </li>
                     @endauth
                     @auth('web')
+
                     <li class="nav-item">
 
+                        <a class="nav-link btn"  href="{{route('user_profile')}}">
+                            <input type="button" value="Profile">
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="nav-link btn"  href="{{route('user_logout')}}">
                             <input type="button" value="Logout">
                         </a>
-                    </li>
+                    </li> -->
                     @endauth
 
 

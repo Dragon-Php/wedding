@@ -73,6 +73,11 @@ Route::group(['middleware'=>['auth:vendor'], 'namespace'=>'Vendor'], function(){
 	Route::get('Profile', 'ProfileController@index')->name('vendor_profile');
 });
 
+Route::group(['middleware'=>['auth'], 'namespace'=>'User'], function(){
+	Route::get('Profile', 'ProfileController@index')->name('user_profile');
+	Route::post('Profile-Descrition', 'ProfileController@description')->name('about_user');
+});
+
 Route::get('UserLogout', function(){
 	Auth::logout();
 	return redirect('/');
