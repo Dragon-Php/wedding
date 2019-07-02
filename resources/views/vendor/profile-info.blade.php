@@ -12,9 +12,8 @@
     <div class="container-fluid" style="margin-top: 48px;">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <h2 class="title"> User Info</h2>
+                <h2 class="title"> Vendor Info</h2>
             </div>
-
         </div>
         <div class="contact-in">
             <div class="row">
@@ -91,30 +90,10 @@
                             <textarea class="form-control" placeholder="message"></textarea>
                         </p>
                     </div>
-                   <!--  <div id="logout" class="tabcontent">
-
-                        <p>
-                            <a href="dsfkjgfndkj">ldkfmnsld</a>
-                        </p>
-                    </div> -->
+                  
 
                     <script>
-                        /*function openCity(evt, cityName) {
-                            var i, tabcontent, tablinks;
-                            tabcontent = document.getElementsByClassName("tabcontent");
-                            for (i = 0; i < tabcontent.length; i++) {
-                                tabcontent[i].style.display = "none";
-                            }
-                            tablinks = document.getElementsByClassName("tablinks");
-                            for (i = 0; i < tablinks.length; i++) {
-                                tablinks[i].className = tablinks[i].className.replace(" active", "");
-                            }
-                            document.getElementById(cityName).style.display = "block";
-                            evt.currentTarget.className += " active";
-                        }*/
-
-                        // Get the element with id="defaultOpen" and click on it
-                        // document.getElementById("defaultOpen").click();
+                        
                     </script>
 
                 </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DummyClass extends Migration
+class CreateVendorPricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class DummyClass extends Migration
      */
     public function up()
     {
-        Schema::create('DummyTable', function (Blueprint $table) {
+        Schema::create('vendor_prices', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('vendor_id')->unsigned();
+            $table->decimal('price', 25,2);
+            $table->string('price_desc');
             $table->isActive(['In Active', 'Active'])->default('1');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('vendor_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -28,6 +32,6 @@ class DummyClass extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('DummyTable');
+        Schema::dropIfExists('vendor_prices');
     }
 }

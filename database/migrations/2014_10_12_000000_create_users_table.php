@@ -46,6 +46,15 @@ class CreateUsersTable extends Migration
                     'password' => bcrypt('admin123'),
                     'isAdmin'=>'0',
                     'is_active'=>'1'
+                ),
+    
+                array(
+                    'name' => 'Vendor Kumar',
+                    'email' => 'vendor@gmail.com',
+                    'contact' => '9846464584',
+                    'password' => bcrypt('admin123'),
+                    'isAdmin'=>'0',
+                    'is_active'=>'1'
                 )
             ]
         );

@@ -78,6 +78,7 @@ vendorlogin.click(function(){
                     vendorloginemail.val('');
                     vendorloginpassword.val('');
                 } else {
+                    $('.vendor_loginsuccess').show();
                     $('.vendor_loginsuccess').html(obj.msg);
                     $('.vendor_loginsuccess').css('color', 'red');
                 }

@@ -70,12 +70,16 @@ Route::group(['middleware'=>['auth:admin'], 'namespace'=>'Admin'], function(){
 });
 
 Route::group(['middleware'=>['auth:vendor'], 'namespace'=>'Vendor'], function(){
-	Route::get('Profile', 'ProfileController@index')->name('vendor_profile');
+	Route::group([ 'prefix'=>'Vendor'], function(){
+		Route::get('Profile', 'ProfileController@index')->name('vendor_profile');
+	});
 });
 
 Route::group(['middleware'=>['auth'], 'namespace'=>'User'], function(){
 	Route::get('Profile', 'ProfileController@index')->name('user_profile');
 	Route::post('Profile-Descrition', 'ProfileController@description')->name('about_user');
+	Route::match(['get', 'post'],'User-Password', 'ProfileController@password')->name('user_password');
+	Route::match(['get', 'post'],'User-Inbox', 'MailController@index')->name('user_inbox');
 });
 
 Route::get('UserLogout', function(){

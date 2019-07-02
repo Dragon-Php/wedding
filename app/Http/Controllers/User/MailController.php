@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Vendor;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 
-class ProfileController extends Controller
+class MailController extends Controller
 {
     public $__req;
 
@@ -16,8 +16,8 @@ class ProfileController extends Controller
 	}
     public function index()
     {	
-    	$data['user'] = Auth::guard('vendor')->user();
-    	return view('vendor.profile-info', $data);
+    	$data['user'] = Auth()->user();
+    	return view('user.profile-info', $data);
 
     }
 }
