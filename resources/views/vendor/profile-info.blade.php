@@ -24,7 +24,7 @@
                         <button class="tablinks {{Route::currentRouteName() == 'user_password' ? 'active':''}}" onclick="window.location.href = '{{route('user_password')}}'">Change password</button>
                         <!--  -->
                         <button class="tablinks {{Route::currentRouteName() == 'user_inbox' ? 'active':''}}" onclick="window.location.href = '{{route('user_inbox')}}'">Inbox</button>
-                        <a href="{{ route('user_logout')}}"><button class="tablinks" onclick="openCity(event, 'logout')">Logout</button></a>
+                        <a href="{{ route('vendor_logout')}}"><button class="tablinks" onclick="openCity(event, 'logout')">Logout</button></a>
                     </div>
 
                     <div id="London" class="tabcontent {{Route::currentRouteName() == 'user_profile' ? 'active_tabcontent':''}}" >
