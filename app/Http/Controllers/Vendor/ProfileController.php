@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Master\Country;
 use App\Master\Gallery;
+use App\Master\VendorType;
 use Auth;
+
+use App\Http\Traits\VendorGallery;
 
 class ProfileController extends Controller
 {
+
+    use VendorGallery; 
+
     public $__req;
 
 	public function __construct(Request $__req)
@@ -18,8 +24,7 @@ class ProfileController extends Controller
 	}
     public function index()
     {	
-    	$data['user'] = Auth::guard('vendor')->user();
-    	$data['countries'] = Country::all(['id', 'name']);
+    	$data = $this->getPageData();
     	if($this->__req->isMethod('post')){
     		$vendor = $this->__req->except('_token');
     		$profile = $data['user']->vendor_profile;
@@ -35,10 +40,7 @@ class ProfileController extends Controller
 
     public function album()
     {	
-    	$data['user'] = Auth::guard('vendor')->user();
-    	$data['countries'] = Country::all(['id', 'name']);
-    	$data['albums'] = Gallery::where('user_id',$data['user']->id)->get(['id','title']);
-    	// dd($data['albums']);
+    	$data = $this->getPageData();
     	if($this->__req->isMethod('post')){
     		$this->validate($this->__req, [
     			'album' => 'required|string'
@@ -53,6 +55,16 @@ class ProfileController extends Controller
 
     	}
     	return view('vendor.profile-info', $data);
+    }
+
+    public function getPageData()
+    {
+        $data['user'] = Auth::guard('vendor')->user();
+        $data['countries'] = Country::all(['id', 'name']);
+        $data['albums'] = Gallery::where('user_id',$data['user']->id)->get(['id','title']);
+        $data['vendor_types'] = VendorType::all(['id', 'title']);
+        $data['galleries'] = UserPortfolio::orderBy('id', 'desc')->get();
+        return $data;
     }
 
     public function album_delete($id)

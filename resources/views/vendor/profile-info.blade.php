@@ -7,6 +7,13 @@
     .active_tabcontent {
         display: block;
     }
+    .remove_gallery {
+        font-size: 20px !important;  
+        color: #b51919;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 </style>
 <section class="contact-us-list">
     <div class="container-fluid" style="margin-top: 48px;">
@@ -20,14 +27,16 @@
 
                 <div class="col-12 col-sm-12 col-md-12 co-lg-12 col-xl-12">
                     <div class="tab">
-                        <button class="tablinks {{Route::currentRouteName() == 'user_profile' ? 'active':''}}" onclick="window.location.href = '{{route('user_profile')}}'" id="defaultOpen">User info</button>
+                        <button class="tablinks {{Route::currentRouteName() == 'vendor_profile' ? 'active':''}}" onclick="window.location.href = '{{route('vendor_profile')}}'" id="defaultOpen">Vendor info</button>
                         <button class="tablinks {{Route::currentRouteName() == 'album' ? 'active':''}}" onclick="window.location.href = '{{route('album')}}'">Album</button>
+
+                        <button class="tablinks {{Route::currentRouteName() == 'gallery' ? 'active':''}}" onclick="window.location.href = '{{route('gallery')}}'">Album</button>
                         <!--  -->
                         
                         <a href="{{ route('vendor_logout')}}"><button class="tablinks" onclick="openCity(event, 'logout')">Logout</button></a>
                     </div>
 
-                    <div id="London" class="tabcontent {{Route::currentRouteName() == 'vendor_profile' ? 'active_tabcontent':''}}" >
+                    <div id="Profile" class="tabcontent {{Route::currentRouteName() == 'vendor_profile' ? 'active_tabcontent':''}}" >
                       {{ Form::open(['url'=>route('vendor_profile')])}}
                         <div class="row">
                             <div class="col-md-1">
@@ -68,7 +77,7 @@
                         
                     </div>
 
-                    <div id="Paris" class="tabcontent {{Route::currentRouteName() == 'album' ? 'active_tabcontent':''}}">
+                    <div id="Album" class="tabcontent {{Route::currentRouteName() == 'album' ? 'active_tabcontent':''}}">
                         <h3>Album</h3>
                         {{ Form::open(['url'=>route('album')])}}
                             <div class="">
@@ -99,11 +108,55 @@
                         </table>
                     </div>
 
-                    <div id="Tokyo" class="tabcontent {{Route::currentRouteName() == 'user_inbox' ? 'active_tabcontent':''}}">
-                        <h3>Inbox</h3>
-                        <p>
-                            <textarea class="form-control" placeholder="message"></textarea>
-                        </p>
+                    <div id="Gallery" class="tabcontent {{Route::currentRouteName() == 'gallery' ? 'active_tabcontent':''}}">
+                        <h3>Gallery</h3>
+                        {{ Form::open(['url'=>route('gallery'),  'files' => true])}}
+                            <div class="form-group">
+                                <label><b>Event Type : </b></label>
+                                <select name="vendor_type_id" class="form-control">
+                                    <option value="">Select Vendor type.</option>
+                                    @foreach($vendor_types as $vendor_type)
+                                    <option value="{{$vendor_type->id}}">{{$vendor_type->title}}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->first('vendor_type_id'))
+                                <font color="red">{{$errors->first('vendor_type_id')}}</font>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label><b>Album : </b></label>
+                                <select name="album_id" class="form-control">
+                                    <option value="">Select album.</option>
+                                    @foreach($albums as $album)
+                                    <option value="{{$album->id}}">{{$album->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label><b>Images : </b></label>
+                                <input type="file" name="images[]" multiple="1">
+                                @if($errors->first('images'))
+                                <font color="red">{{$errors->first('images')}}</font>
+                                @endif
+                            </div>
+
+                            <button type="submit" class="btn btn-primary"> Add</button>
+                        {{ Form::close()}}
+
+                        <div class="container portfolio" style="margin-top: 20px">
+
+                            <div class="row">
+                                @foreach($galleries as $gallery)
+                                <div class="col-md-3">
+                                    {{ Html::image($gallery->image, '', ['class'=>'img-responsive', 'width'=>'100%'])}}
+                                    <a onclick="remove_gallery({{$gallery->id}})" =""><i class="fa fa-times remove_gallery"></i></a>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        
                     </div>
                   
 
@@ -122,5 +175,20 @@
 <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'description' );
+</script>
+
+<script type="text/javascript">
+    
+    function remove_gallery(gallery_id){
+        if(gallery_id != ''){
+            $.ajax({
+                url : '{{url("Vendor/Gallery-Delete")}}/'+gallery_id,
+                success : function(result){
+                    alert('Gallery deleted successfully');
+                    $('.portfolio').html(result);
+                }
+            });
+        }
+    }
 </script>
 @endsection 
