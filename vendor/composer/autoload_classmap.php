@@ -44,6 +44,7 @@ return array(
     'App\\Master\\State' => $baseDir . '/app/Master/State.php',
     'App\\Master\\UserCategory' => $baseDir . '/app/Master/UserCategory.php',
     'App\\Master\\UserProfile' => $baseDir . '/app/Master/UserProfile.php',
+    'App\\Master\\VendorProfile' => $baseDir . '/app/Master/VendorProfile.php',
     'App\\Master\\VendorType' => $baseDir . '/app/Master/VendorType.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

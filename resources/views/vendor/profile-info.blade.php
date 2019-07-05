@@ -21,21 +21,46 @@
                 <div class="col-12 col-sm-12 col-md-12 co-lg-12 col-xl-12">
                     <div class="tab">
                         <button class="tablinks {{Route::currentRouteName() == 'user_profile' ? 'active':''}}" onclick="window.location.href = '{{route('user_profile')}}'" id="defaultOpen">User info</button>
-                        <button class="tablinks {{Route::currentRouteName() == 'user_password' ? 'active':''}}" onclick="window.location.href = '{{route('user_password')}}'">Change password</button>
+                        <button class="tablinks {{Route::currentRouteName() == 'album' ? 'active':''}}" onclick="window.location.href = '{{route('album')}}'">Album</button>
                         <!--  -->
-                        <button class="tablinks {{Route::currentRouteName() == 'user_inbox' ? 'active':''}}" onclick="window.location.href = '{{route('user_inbox')}}'">Inbox</button>
+                        
                         <a href="{{ route('vendor_logout')}}"><button class="tablinks" onclick="openCity(event, 'logout')">Logout</button></a>
                     </div>
 
-                    <div id="London" class="tabcontent {{Route::currentRouteName() == 'user_profile' ? 'active_tabcontent':''}}" >
-                      {{ Form::open(['url'=>route('about_user')])}}
+                    <div id="London" class="tabcontent {{Route::currentRouteName() == 'vendor_profile' ? 'active_tabcontent':''}}" >
+                      {{ Form::open(['url'=>route('vendor_profile')])}}
                         <div class="row">
                             <div class="col-md-1">
                                 <i class="fa fa-user"></i>
                             </div>
                             <div class="col-md-10">
                                 <h5>{{$user->name}}</h5>
-                                <textarea name="description" class="form-control" placeholder="Write something about yourself">{{ !empty($user->profile) ? $user->profile->description:''}}</textarea>
+                                <div class="form-group">
+                                    <select class="form-control" name="country_id" onchange="getState(this.value)">
+                                        <option value="">Select Country</option>
+                                        @foreach($countries as $country)
+                                        <option value="{{$country->id}}">{{$country->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <select class="form-control states" name="state_id" onchange="getCity(this.value)">
+                                        <option value="">Select State</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control cities" name="city_id">
+                                        <option value="">Select City</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="address" class="form-control"  placeholder="Enter full address"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <h4>Adout yourself : </h4>
+                                    <textarea name="description" class="form-control" placeholder="Write something about yourself">{{ !empty($user->profile) ? $user->profile->description:''}}</textarea>
+                                </div>
                                 <button class="btn btn-primary" type="submit" style="margin-top: 10px"> Save</button>
                             </div>
                         </div>
@@ -43,45 +68,31 @@
                         
                     </div>
 
-                    <div id="Paris" class="tabcontent {{Route::currentRouteName() == 'user_password' ? 'active_tabcontent':''}}">
-                        <h3>Change password</h3>
-                        @if(\Session::has('success'))
-                        <div class="alert alert-success" role="alert">
-                          {{\Session::get('success')}}
-                        </div>
-                        @endif
-                        @if(\Session::has('error'))
-                        <div class="alert alert-danger" role="alert">
-                          {{\Session::get('error')}}
-                        </div>
-                        @endif
-                        
-                        {{ Form::open(['url'=>route('user_password')])}}
-                            <div class="password-cls">
-                                <p>
-                                    <input type="password" name="current_password" class="form-control" placeholder="Enter current password">
-                                    @if($errors->first('current_password'))
-                                    <font color="red">{{ $errors->first('current_password')}}</font>
-                                    @endif
-                                </p>
-                                <p>
-                                    <input type="password" name="password" class="form-control" placeholder="Enter new password">
-                                    @if($errors->first('password'))
-                                    <font color="red">{{ $errors->first('password')}}</font>
-                                    @endif
-                                </p>
-                                <p>
-                                    <input type="password" name="password_confirmation" class="form-control" placeholder="Re-enter new password">
-                                    @if($errors->first('password_confirmation'))
-                                    <font color="red">{{ $errors->first('password_confirmation')}}</font>
-                                    @endif
-                                </p>
-
-                                <p>
-                                    <button class="btn btn-primary">Update</button>
-                                </p>
+                    <div id="Paris" class="tabcontent {{Route::currentRouteName() == 'album' ? 'active_tabcontent':''}}">
+                        <h3>Album</h3>
+                        {{ Form::open(['url'=>route('album')])}}
+                            <div class="">
+                                <div class="form-inline">
+                                    <input type="text" class="form-control" name="album">
+                                    <button class="btn btn-primary" type="submit" style="margin-left: 10px"> Add</button>
+                                </div>
                             </div>
                         {{ Form::close()}}
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
                     <div id="Tokyo" class="tabcontent {{Route::currentRouteName() == 'user_inbox' ? 'active_tabcontent':''}}">
@@ -103,4 +114,9 @@
     </div>
 
 </section>
+
+<script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'description' );
+</script>
 @endsection 

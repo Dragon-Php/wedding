@@ -71,7 +71,8 @@ Route::group(['middleware'=>['auth:admin'], 'namespace'=>'Admin'], function(){
 
 Route::group(['middleware'=>['auth:vendor'], 'namespace'=>'Vendor'], function(){
 	Route::group([ 'prefix'=>'Vendor'], function(){
-		Route::get('Profile', 'ProfileController@index')->name('vendor_profile');
+		Route::match(['get', 'post'],'Profile', 'ProfileController@index')->name('vendor_profile');
+		Route::match(['get', 'post'],'Album', 'ProfileController@album')->name('album');
 	});
 });
 

@@ -63,12 +63,12 @@
                             <input type="button" value="Profile">
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
 
                         <a class="nav-link btn"  href="{{route('vendor_logout')}}">
                             <input type="button" value="Logout">
                         </a>
-                    </li>
+                    </li> -->
                     @endauth
                     @auth('web')
 

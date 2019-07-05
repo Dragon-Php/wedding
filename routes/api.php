@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('states/{country_id}', 'AjaxController@states');
+Route::get('cities/{state_id}', 'AjaxController@cities');

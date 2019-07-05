@@ -116,6 +116,38 @@
             });
         });
     </script>
+<script type="text/javascript">
+  function getState(country_id){
+    var state = '<option value="">Select State</option>';
+    if(country_id != ''){
+      $.ajax({
+        url : '{{url("api/states/")}}/'+country_id,
+        success : function(result){
+          $('.states').html(result);
+        }
+      });
+    } else {
+      $('.states').html(state);
+    } 
+
+
+  }
+  function getCity(state_id){
+    var state = '<option value="">Select City</option>';
+    if(state_id != ''){
+      $.ajax({
+        url : '{{url("api/cities/")}}/'+state_id,
+        success : function(result){
+          $('.cities').html(result);
+        }
+      });
+    } else {
+      $('.cities').html(state);
+    } 
+
+
+  }
+</script>
 </body>
 
 </html>

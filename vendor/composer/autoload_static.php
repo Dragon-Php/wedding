@@ -410,6 +410,7 @@ class ComposerStaticInit36eab415b8b15e72caa3c955511e4eaa
         'App\\Master\\State' => __DIR__ . '/../..' . '/app/Master/State.php',
         'App\\Master\\UserCategory' => __DIR__ . '/../..' . '/app/Master/UserCategory.php',
         'App\\Master\\UserProfile' => __DIR__ . '/../..' . '/app/Master/UserProfile.php',
+        'App\\Master\\VendorProfile' => __DIR__ . '/../..' . '/app/Master/VendorProfile.php',
         'App\\Master\\VendorType' => __DIR__ . '/../..' . '/app/Master/VendorType.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

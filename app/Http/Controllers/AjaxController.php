@@ -105,4 +105,15 @@ class AjaxController extends Controller
             }
         }
     }
+    public function cities($state_id)
+    {
+        $state = State::find($state_id);
+        echo '<option value="">Select City</option>';
+        if(!empty($state)){
+            $cities = $state->cities()->get();
+            foreach ($cities as $state) {
+                echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+            }
+        }
+    }
 }

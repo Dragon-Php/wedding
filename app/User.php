@@ -46,4 +46,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Master\UserProfile');
     }
+    public function vendor_profile()
+    {
+        return $this->hasOne('App\Master\VendorProfile' , 'vendor_id');
+    }
 }
