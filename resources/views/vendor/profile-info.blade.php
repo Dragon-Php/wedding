@@ -76,6 +76,9 @@
                                     <input type="text" class="form-control" name="album">
                                     <button class="btn btn-primary" type="submit" style="margin-left: 10px"> Add</button>
                                 </div>
+                                @if($errors->first('album'))
+                                <font color="red">{{$errors->first('album')}}</font>
+                                @endif
                             </div>
                         {{ Form::close()}}
                         <table class="table table-stripped">
@@ -86,11 +89,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                @foreach($albums as $album)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$album->title}}</td>
+                                    <td><a href="{{url('Vendor/Album-Delete/'.$album->id)}}"><i class="fa fa-times" style="font-size: 25px;color: #ce2c2c;"></i></a></td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

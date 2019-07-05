@@ -73,6 +73,7 @@ Route::group(['middleware'=>['auth:vendor'], 'namespace'=>'Vendor'], function(){
 	Route::group([ 'prefix'=>'Vendor'], function(){
 		Route::match(['get', 'post'],'Profile', 'ProfileController@index')->name('vendor_profile');
 		Route::match(['get', 'post'],'Album', 'ProfileController@album')->name('album');
+		Route::get('Album-Delete/{id}', 'ProfileController@album_delete');
 	});
 });
 
