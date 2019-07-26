@@ -6,7 +6,7 @@
                     <p>India's Favourite Wedding Planning Platform</p>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <p class="text-right"><img src="images/review-icon.png" class="img-fluid" width="20"><a href="write-review.html" style="color: #fff;"> Write A Review</a></p>
+                    <p class="text-right">{{ Html::image('images/review-icon.png', '', ['class'=>'img-fluid'])}}<a href="{{route('write-review')}}" style="color: #fff;"> Write A Review</a></p>
                 </div>
             </div>
         </div>
@@ -23,11 +23,11 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{route('categories')}}">Categories <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Venu</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blogs</a>
+                        <a class="nav-link" href="{{route('blogs')}}">Blogs</a>
                     </li>
 
                 </ul>

@@ -15,6 +15,8 @@ Route::group(['namespace'=>'Website'], function(){
 	Route::get('/', 'HomeController@index');
 	Route::get('All-Categories', 'HomeController@categories')->name('categories');
 	Route::get('Category/{slug}', 'HomeController@alleventtype');
+	Route::get('All-Vendors/{vendor_type}','HomeController@allvendors');
+	Route::get('Vendor-Detail/{vendor}','HomeController@vendor_detail');
 });
 
 Route::get('Admin', 'AdminLoginController@index');
@@ -30,6 +32,30 @@ Route::post('VendorLogin', 'AjaxController@vendor_login')->name('vendor_login');
 Route::get('login', function(){
 	return redirect('/');
 })->name('login');
+
+Route::get('Contact-Us', function(){
+	return view('front.contactus');
+})->name('contactus');
+
+Route::get('Privacy-Policy', function(){
+	return view('front.privatepolicy');
+})->name('privacypolicy');
+Route::get('About-Us', function(){
+	return view('front.aboutus');
+})->name('aboutus');
+Route::get('Blogs', function(){
+	return view('front.blogs');
+})->name('blogs');
+
+Route::get('Blog-Detail', function(){
+	return view('front.blogdetail');
+})->name('blogdetail');
+
+Route::get('Write-Review', function(){
+	return view('front.write-review');
+})->name('write-review');
+
+
 
 /*Auth::routes();*/
 
@@ -63,6 +89,13 @@ Route::group(['middleware'=>['auth:admin'], 'namespace'=>'Admin'], function(){
 	Route::match(['get', 'post'],'Admin-AddVendorType', 'VendorTypeController@create')->name('admin_addvendortype');
 	Route::match(['get', 'post'],'Admin-EditVendorType/{id}', 'VendorTypeController@edit');
 	Route::match(['get', 'post'],'Admin-DeleteVendorType/{id}', 'VendorTypeController@delete');
+
+	Route::get('Admin-Vendor', 'VendorController@index')->name('adminvendor');
+	Route::match(['get', 'post'],'Admin-AddVendor', 'VendorController@create')->name('admin_addvendor');
+	Route::match(['get', 'post'],'Admin-EditVendor/{id}', 'VendorController@edit');
+	Route::match(['get', 'post'],'Admin-DeleteVendor/{id}', 'VendorController@delete');
+	Route::match(['get', 'post'],'Admin-StatusVendor/{id}', 'VendorController@status');
+
 	Route::get('Admin-Logout', function(){
 		Auth::guard('admin')->logout();
 		return redirect('Admin');

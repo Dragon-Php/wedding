@@ -13,9 +13,9 @@
                 <!-- BEGIN HEADER INNER -->
                 <div class="page-header-inner ">
                     <!-- BEGIN LOGO -->
-                    <div class="page-logo">
+                    <div class="page-logo" style="padding-right: 0; padding-left: 0">
                         <a href="index.html">
-                            {{ Html::image('admin/img/logo.png', 'Logo', ['class'=>'logo-default'])}}
+                            {{ Html::image('assets/logo-copy.png', 'Logo', ['class'=>'logo-default','style'=>'margin: 12px 0 0;'])}}
                         </a>
                         <div class="menu-toggler sidebar-toggler">
                             <span></span>

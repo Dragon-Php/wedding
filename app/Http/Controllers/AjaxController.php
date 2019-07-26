@@ -27,8 +27,12 @@ class AjaxController extends Controller
                 'contact' => $this->__req->contact,
                 'email' => $this->__req->email,
                 'password' => bcrypt($this->__req->password),
+                'slug' => substr(strtoupper(str_replace(' ', '', $this->__req->name)), 0, 6).rand(10000, 100000),
             ];
-            if(User::create($insert)){
+
+            $user = User::create($insert);
+            if($user){
+                $user->assignRole('User');
                 echo json_encode(['status'=>'1', 'msg'=>'Thankyou for being our member. Please login.']);
             } else {
                 echo json_encode(['status'=>'0', 'msg'=>'Something went wrong please try again.']);
@@ -51,12 +55,14 @@ class AjaxController extends Controller
                 'contact' => $this->__req->contact,
                 'email' => $this->__req->email,
                 'password' => bcrypt($this->__req->password),
+                'slug' => substr(strtoupper(str_replace(' ', '', $this->__req->name)), 0, 6).rand(10000, 100000),
             ];
             $vendor = User::create($insert);
             if($vendor){
+                $vendor->assignRole('Vendor');
                 if($this->__req->vendor_cateory != ''){
                     $category = explode(',', $this->__req->vendor_cateory);
-                    $vendor->category()->sync($category);
+                    $vendor->vendor_type()->sync($category);
                 }
                 echo json_encode(['status'=>'1', 'msg'=>'Thankyou for being our member. Please login.']);
             } else {
@@ -74,11 +80,17 @@ class AjaxController extends Controller
             'email' => $this->__req->email,
             'password' => $this->__req->password,
         ];
-        if(Auth::attempt($credentials)){
-            echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
+        $user = User::where('email', $this->__req->email)->first();
+        if($user->hasRole('User')){
+            if(Auth::attempt($credentials)){
+                echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
+            } else {
+                echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
+            }
         } else {
-            echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
+            echo json_encode(['status'=>'2', 'msg'=>'Authentication failed.']);
         }
+        
     }
 
     public function vendor_login()
@@ -87,11 +99,17 @@ class AjaxController extends Controller
 		    'email' => $this->__req->email,
 		    'password' => $this->__req->password,
     	];
-        if(Auth::guard('vendor')->attempt($credentials)){
-            echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
+        $user = User::where('email', $this->__req->email)->first();
+        if($user->hasRole('Vendor')){
+            if(Auth::guard('vendor')->attempt($credentials)){
+                echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
+            } else {
+                echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
+            }
         } else {
-            echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
+            echo json_encode(['status'=>'2', 'msg'=>'Authentication failed.']);
         }
+        
     }
 
     public function states($country_id)

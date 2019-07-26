@@ -119,6 +119,7 @@ $('.customer_login').click(function(){
 			data : {  email : userloginemail.val(), password : userloginpassword.val(), _token:$('meta[name=__token]').attr('data-value') },
 			success : function(result){
 				var obj = JSON.parse(result);
+				$('.login_success').show();
 				if(obj.status == '1'){
 					$('.login_success').html(obj.msg);
 					$('.login_success').css('color', 'green');

@@ -21,4 +21,9 @@ class VendorType extends Model
     {
     	return $this->belongsToMany('App\Master\Category', 'category_vendor_type');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

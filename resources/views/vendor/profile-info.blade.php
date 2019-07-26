@@ -30,14 +30,30 @@
                         <button class="tablinks {{Route::currentRouteName() == 'vendor_profile' ? 'active':''}}" onclick="window.location.href = '{{route('vendor_profile')}}'" id="defaultOpen">Vendor info</button>
                         <button class="tablinks {{Route::currentRouteName() == 'album' ? 'active':''}}" onclick="window.location.href = '{{route('album')}}'">Album</button>
 
-                        <button class="tablinks {{Route::currentRouteName() == 'gallery' ? 'active':''}}" onclick="window.location.href = '{{route('gallery')}}'">Album</button>
+                        <button class="tablinks {{Route::currentRouteName() == 'gallery' ? 'active':''}}" onclick="window.location.href = '{{route('gallery')}}'">Gallery</button>
                         <!--  -->
                         
                         <a href="{{ route('vendor_logout')}}"><button class="tablinks" onclick="openCity(event, 'logout')">Logout</button></a>
                     </div>
 
+                    @php
+                    $country_id  = $state_id  = $city_id  = $address  = $description = $banner = '';
+                    $states =  $cities = [];
+                    if($profile != ''){
+                        $country_id  = $profile->country_id;
+                        $state_id  = $profile->state_id;
+                        $city_id  = $profile->city_id;
+                        $address  = $profile->address;
+                        $banner  = $profile->banner;
+                        $description  = $profile->description;
+                        $states = \App\Master\State::where('country_id', $country_id)->get();
+                        $cities = \App\Master\City::where('state_id', $state_id)->get();
+                    }
+                    @endphp
+
+
                     <div id="Profile" class="tabcontent {{Route::currentRouteName() == 'vendor_profile' ? 'active_tabcontent':''}}" >
-                      {{ Form::open(['url'=>route('vendor_profile')])}}
+                      {{ Form::open(['url'=>route('vendor_profile'), 'files'=>true])}}
                         <div class="row">
                             <div class="col-md-1">
                                 <i class="fa fa-user"></i>
@@ -48,7 +64,7 @@
                                     <select class="form-control" name="country_id" onchange="getState(this.value)">
                                         <option value="">Select Country</option>
                                         @foreach($countries as $country)
-                                        <option value="{{$country->id}}">{{$country->name}}</option>
+                                        <option {{ $country_id == $country->id ? 'selected="1"':''}} value="{{$country->id}}">{{$country->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -56,19 +72,35 @@
                                 <div class="form-group">
                                     <select class="form-control states" name="state_id" onchange="getCity(this.value)">
                                         <option value="">Select State</option>
+                                        @if(!empty($state_id))
+                                        @foreach($states as $state)
+                                        <option {{ $state_id == $state->id ? 'selected="1"':''}} value="{{$state->id}}">{{$state->name}}</option>
+                                        @endforeach
+                                        @endif
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control cities" name="city_id">
                                         <option value="">Select City</option>
+                                        @if(!empty($city_id))
+                                        @foreach($cities as $city)
+                                        <option {{ $city_id == $city->id ? 'selected="1"':''}} value="{{$city->id}}">{{$city->name}}</option>
+                                        @endforeach
+                                        @endif
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="address" class="form-control"  placeholder="Enter full address"></textarea>
+                                    <input type="file" name="banner">
+                                    @if($banner != '')
+                                    {{ Html::image($banner, '', ['class'=>'img-responsive', 'width'=>'200'])}}
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="address" class="form-control"  placeholder="Enter full address">{{ $address }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <h4>Adout yourself : </h4>
-                                    <textarea name="description" class="form-control" placeholder="Write something about yourself">{{ !empty($user->profile) ? $user->profile->description:''}}</textarea>
+                                    <textarea name="description" class="form-control" placeholder="Write something about yourself">{{ $description }}</textarea>
                                 </div>
                                 <button class="btn btn-primary" type="submit" style="margin-top: 10px"> Save</button>
                             </div>
@@ -149,7 +181,7 @@
 
                             <div class="row">
                                 @foreach($galleries as $gallery)
-                                <div class="col-md-3">
+                                <div class="col-md-3" style="margin-bottom: 10px">
                                     {{ Html::image($gallery->image, '', ['class'=>'img-responsive', 'width'=>'100%'])}}
                                     <a onclick="remove_gallery({{$gallery->id}})" =""><i class="fa fa-times remove_gallery"></i></a>
                                 </div>

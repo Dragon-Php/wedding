@@ -13,20 +13,20 @@
                     <h5>Site map</h5>
                     <ul>
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="{{url('/')}}">Home</a>
                         </li>
                         <li>
-                            <a href="about-us.html">About us</a>
+                            <a href="{{route('aboutus')}}">About us</a>
                         </li>
                         <li>
-                            <a href="contact-us.html">Contact us</a>
+                            <a href="{{route('contactus')}}">Contact us</a>
                         </li>
                         <li>
-                            <a href="vendors.html">Categories</a>
+                            <a href="{{route('categories')}}">Categories</a>
                         </li>
 
                         <li>
-                            <a href="privacy-policy.html">Privacy Policy</a>
+                            <a href="{{route('privacypolicy')}}">Privacy Policy</a>
                         </li>
                     </ul>
                 </div>

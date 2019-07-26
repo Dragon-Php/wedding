@@ -117,6 +117,25 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item  {{ \Request::segment(1) == 'Admin-Vendor' || \Request::segment(1) == 'Admin-AddVendor' || \Request::segment(1) == 'Admin-EditVendor' ? 'active' : ''}}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">Vendors</span>
+                    <span class="arrow {{ \Request::segment(1) == 'Admin-Vendor' || \Request::segment(1) == 'Admin-AddVendor' || \Request::segment(1) == 'Admin-EditVendor' ? 'open' : ''}}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item {{ \Request::segment(1) == 'Admin-Vendor' ? 'active' : ''}} ">
+                        <a href="{{ route('adminvendor')}}" class="nav-link ">
+                            <span class="title">List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ \Request::segment(1) == 'Admin-AddVendor' ? 'active' : ''}} ">
+                        <a href="{{route('admin_addvendor')}}" class="nav-link ">
+                            <span class="title">Add</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             
         </ul>
         <!-- END SIDEBAR MENU -->

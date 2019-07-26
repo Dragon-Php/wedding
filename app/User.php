@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Http\Traits\Active;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Active, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','contact', 'city'
+        'name', 'email', 'password','contact', 'city','slug', 'is_active'
     ];
 
     /**
@@ -37,9 +39,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function category()
+    public function vendor_type()
     {
-        return $this->belongsToMany('App\Master\Category', 'category_vendor', 'vendor_id');
+        return $this->belongsToMany('App\Master\VendorType');
     }
 
     public function profile()
@@ -49,5 +51,10 @@ class User extends Authenticatable
     public function vendor_profile()
     {
         return $this->hasOne('App\Master\VendorProfile' , 'vendor_id');
+    }
+
+    public function user_portfolio()
+    {
+        return $this->hasMany('App\Master\UserPortfolio');
     }
 }

@@ -92,6 +92,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       $('.states').html(state);
     } 
 
+  }
+
+  function getCity(state_id){
+    var state = '<option value="">Select City</option>';
+    if(state_id != ''){
+      $.ajax({
+        url : '{{url("api/cities")}}/'+state_id,
+        success : function(result){
+          $('.cities').html(result);
+        }
+      });
+    } else {
+      $('.cities').html(state);
+    } 
+
 
   }
+
 </script>

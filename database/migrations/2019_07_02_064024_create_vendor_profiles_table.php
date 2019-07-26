@@ -19,6 +19,7 @@ class CreateVendorProfilesTable extends Migration
             $table->integer('country_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();
             $table->integer('city_id')->nullable();
+            $table->text('banner')->nullable();
             $table->text('address')->nullable();
             $table->text('description')->nullable();
             $table->isActive(['In Active', 'Active'])->default('1');

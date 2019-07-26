@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -36,7 +37,8 @@ class CreateUsersTable extends Migration
                     'contact' => '9846464584',
                     'password' => bcrypt('admin123'),
                     'isAdmin'=>'1',
-                    'is_active'=>'1'
+                    'is_active'=>'1',
+                    'slug' => substr(strtoupper(str_replace(' ', '', 'Admin Kumar')), 0, 6).rand(10000, 100000),
                 ),
     
                 array(
@@ -45,7 +47,8 @@ class CreateUsersTable extends Migration
                     'contact' => '9846464584',
                     'password' => bcrypt('admin123'),
                     'isAdmin'=>'0',
-                    'is_active'=>'1'
+                    'is_active'=>'1',
+                    'slug' => substr(strtoupper(str_replace(' ', '', 'User Kumar')), 0, 6).rand(10000, 100000),
                 ),
     
                 array(
@@ -54,7 +57,8 @@ class CreateUsersTable extends Migration
                     'contact' => '9846464584',
                     'password' => bcrypt('admin123'),
                     'isAdmin'=>'0',
-                    'is_active'=>'1'
+                    'is_active'=>'1',
+                    'slug' => substr(strtoupper(str_replace(' ', '', 'Vendor Kumar')), 0, 6).rand(10000, 100000),
                 )
             ]
         );

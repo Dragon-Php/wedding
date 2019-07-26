@@ -116,7 +116,7 @@
                     <li>
                         <a href="#">
                             <span class="photo">
-                                {{ Html::image('admin/img/avatar2.jpg', '', ['class'=>'img-circle'])}}
+                                {{ Html::image('assets/img/avatar2.jpg', '', ['class'=>'img-circle'])}}
                             </span>
                             <span class="subject">
                                 <span class="from"> Lisa Wong </span>
@@ -128,7 +128,7 @@
                     <li>
                         <a href="#">
                             <span class="photo">
-                                {{ Html::image('admin/img/avatar3.jpg', '', ['class'=>'img-circle'])}}
+                                {{ Html::image('assets/img/avatar3.jpg', '', ['class'=>'img-circle'])}}
                             </span>
                             <span class="subject">
                                 <span class="from"> Richard Doe </span>
@@ -140,7 +140,7 @@
                     <li>
                         <a href="#">
                             <span class="photo">
-                                {{ Html::image('admin/img/avatar1.jpg', '', ['class'=>'img-circle'])}}
+                                {{ Html::image('assets/img/avatar1.jpg', '', ['class'=>'img-circle'])}}
                             </span>
                             <span class="subject">
                                 <span class="from"> Bob Nilson </span>
@@ -152,7 +152,7 @@
                     <li>
                         <a href="#">
                             <span class="photo">
-                                {{ Html::image('admin/img/avatar2.jpg', '', ['class'=>'img-circle'])}}
+                                {{ Html::image('assets/img/avatar2.jpg', '', ['class'=>'img-circle'])}}
                             </span>
                             <span class="subject">
                                 <span class="from"> Lisa Wong </span>
@@ -164,7 +164,7 @@
                     <li>
                         <a href="#">
                             <span class="photo">
-                                {{ Html::image('admin/img/avatar3.jpg', '', ['class'=>'img-circle'])}}
+                                {{ Html::image('assets/img/avatar3.jpg', '', ['class'=>'img-circle'])}}
                             </span>
                             <span class="subject">
                                 <span class="from"> Richard Doe </span>

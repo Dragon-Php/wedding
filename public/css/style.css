@@ -16,7 +16,6 @@ a:hover
 {
     text-decoration: none;
 }
-
 .btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show>.btn-outline-success.dropdown-toggle {
     color: #fff;
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0) !important;
@@ -121,7 +120,7 @@ ul.banner-form li:last-child .form-group button.btn.btn-primary {
 /*---------------------------------------- category-----------style--------------------*/
 
 section {
-    padding: 0;
+    padding: 50px 0px;
     text-align: center;
 }
 .title
@@ -1107,8 +1106,4 @@ input[type="button"] {
 }
 .search-blog a {
     color: #4a4a4a;
-}
-
-a {
-    cursor: pointer;
 }

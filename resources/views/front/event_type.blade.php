@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-12">
 
-                <form>
+                <!-- <form>
                     <ul class="banner-form">
                         <li>
                             <div class="form-group">
@@ -109,7 +109,7 @@
                             </div>
                         </li>
                     </ul>
-                </form>
+                </form> -->
 
             </div>
         </div>
@@ -135,13 +135,16 @@
 				@foreach($vendor_types as $vendor_type)
                 <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
                     <div class="venu-img">
-                    	{{Html::image($vendor_type->image, '', ['class'=>'img-fluid'])}}
+                        <a href="{{ url('All-Vendors/'.$vendor_type->slug)}}">
+                        {{Html::image($vendor_type->image, '', ['class'=>'img-fluid'])}}
+                        </a>    
                         
                         <div class="venu-name">
                             <ul>
                                 <li>
-                                    <h5>{{$vendor_type->title}}</h5>
-                                    
+                                    <a style="color: #4a4a4a" href="{{ url('All-Vendors/'.$vendor_type->slug)}}">
+                                        <h5>{{$vendor_type->title}}</h5>
+                                    </a>
                                 </li>
                                 <li><span class="StarRating center rating-5 regular"><i class="fa fa-star margin-r-5"></i> 4.9</span>
                                     <p>5 reviews</p>

@@ -18,6 +18,7 @@ trait VendorGallery
     public function gallery()
     {	
     	$data['user'] = Auth::guard('vendor')->user();
+        $data['profile'] = $data['user']->vendor_profile;
     	$data['countries'] = Country::all(['id', 'name']);
         $data['albums'] = Gallery::where('user_id',$data['user']->id)->get(['id','title']);
         $data['vendor_types'] = VendorType::all(['id', 'title']);
