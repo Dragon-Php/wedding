@@ -21,3 +21,4 @@ Route::get('states/{country_id}', 'AjaxController@states');
 Route::get('cities/{state_id}', 'AjaxController@cities');
 Route::get('vendorcity/{country}', 'AjaxController@vendorcity');
 Route::post('vendors', 'AjaxController@vendors');
+Route::post('allvendors', 'AjaxController@allvendors');

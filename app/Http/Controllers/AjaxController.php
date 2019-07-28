@@ -213,4 +213,25 @@ class AjaxController extends Controller
         }
         // print_r($this->__req->all());
     }
+
+    public function allvendors()
+    {
+
+        $vendors = User::role('vendor', 'vendor')->where('name', 'like', "{$this->__req->key}%")->get();
+        $i = 0;
+        foreach ($vendors as $vendor) {
+            $profile = $vendor->vendor_profile;
+            if($profile != ''){
+                $i++;
+                echo '<div class="row ven_filter" style="cursor:pointer">
+                    <div class="col-md-1"><img src="'.url($profile->banner).'"></div>
+                    <div class="col-md-11"> <p data-id="'.$vendor->slug.'">'.$vendor->name.'</p></div>
+                </div>';
+            }
+            
+        }
+        if($i == 0){
+            echo 'no';
+        }
+    }
 }

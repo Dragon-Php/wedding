@@ -39,15 +39,15 @@
                         
                     </div>
                     @if(session()->get('error'))
-                            <div class="alert alert-danger">
-                                <button class="close" data-close="alert"></button> {{ session()->get('error')}}.
-                            </div>
-                            @endif
-                            @if(session()->get('success'))
-                            <div class="alert alert-success">
-                                <button class="close" data-close="alert"></button> {{ session()->get('success')}}.
-                            </div>
-                            @endif
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button> {{ session()->get('error')}}.
+                    </div>
+                    @endif
+                    @if(session()->get('success'))
+                    <div class="alert alert-success">
+                        <button class="close" data-close="alert"></button> {{ session()->get('success')}}.
+                    </div>
+                    @endif
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="row">

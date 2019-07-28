@@ -1,7 +1,10 @@
 <div class="row">
 	@php $i = 0; @endphp
 	@foreach($vendors as $vendor)
-    @php   $profile = $vendor->vendor_profile; @endphp
+    @php   
+    $profile = $vendor->vendor_profile; 
+    $reviews = $vendor->vendor_revews()->get();
+    @endphp
     @if($profile != '')
     @php  $i++  @endphp
     <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
@@ -17,8 +20,8 @@
                             <h5>{{$vendor->name}}</h5>
                         </a>
                     </li>
-                    <li><span class="StarRating center rating-5 regular"><i class="fa fa-star margin-r-5"></i> 4.9</span>
-                        <p>5 reviews</p>
+                    <li><span class="StarRating center rating-5 regular"><i class="fa fa-star margin-r-5"></i>  @if($reviews->count() > 0 ) {{$reviews->avg('rating') }}  @else {{ 0 }} @endif</span>
+                        <p> @if($reviews->count() > 0 ) {{ $reviews->count() }} @else {{ 0 }} @endif reviews</p>
                     </li>
                 </ul>
                 <!-- <ul class="price">

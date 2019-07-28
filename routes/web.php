@@ -59,12 +59,6 @@ Route::get('Blog-Detail/{id}', function($id){
 	return view('front.blogdetail', $data);
 });
 
-Route::get('Write-Review', function(){
-	return view('front.write-review');
-})->name('write-review');
-
-
-
 /*Auth::routes();*/
 
 // Route::get('Admin-Dashboard', 'HomeController@index')->name('admin_dashboard');
@@ -137,6 +131,8 @@ Route::group(['middleware'=>['auth'], 'namespace'=>'User'], function(){
 	Route::post('Profile-Descrition', 'ProfileController@description')->name('about_user');
 	Route::match(['get', 'post'],'User-Password', 'ProfileController@password')->name('user_password');
 	Route::match(['get', 'post'],'User-Inbox', 'MailController@index')->name('user_inbox');
+
+	Route::match(['get', 'post'],'Write-Review', 'ReviewController@index')->name('write-review');
 });
 
 Route::get('UserLogout', function(){
@@ -151,6 +147,9 @@ Route::get('VendorLogout', function(){
 
 Route::get('migrate', function(){
 	\Artisan::call('migrate:fresh --seed');
+});
+Route::get('run_migrate', function(){
+	\Artisan::call('migrate');
 });
 
 

@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Master\VendorAvailablePlace', 'vendor_id');
     }
+
+    public function vendor_revews()
+    {
+        return $this->hasMany('App\Master\Review', 'vendor_id');
+    }
 }

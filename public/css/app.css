@@ -28,8 +28,34 @@
     height: 100px; 
 }
 
-
+.rating input{
+    cursor: context-menu;
+}
 
 a {
     cursor: pointer;
+}
+
+.vendor_rate_list {
+    position: absolute;
+    z-index: 99;
+    background: #fff;
+    border: 1px solid #c7beb4;
+    padding: -20px;
+    margin: 0;
+    width: 50%;
+    display: none;
+}
+
+.vendor_content_list .row {
+    text-align: left;
+    border-bottom: 1px #c7beb4 solid;
+}
+.vendor_content_list img {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+}
+.vendor_content_list p{
+    margin-top: 3% !important;
 }
