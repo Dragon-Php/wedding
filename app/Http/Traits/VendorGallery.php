@@ -7,6 +7,7 @@ use App\Master\Country;
 use App\Master\VendorType;
 use App\Master\Gallery;
 use App\Master\UserPortfolio;
+use App\Master\VendorAvailablePlace;
 use Auth;
 
 trait VendorGallery
@@ -23,7 +24,7 @@ trait VendorGallery
         $data['albums'] = Gallery::where('user_id',$data['user']->id)->get(['id','title']);
         $data['vendor_types'] = VendorType::all(['id', 'title']);
         $data['galleries'] = UserPortfolio::orderBy('id', 'desc')->get();
-
+        $data['locations'] = $data['user']->vendor_locations()->get();
     	if($this->__req->isMethod('post')){
     		$this->validate($this->__req, [
     			'vendor_type_id' => 'required|string',
@@ -62,6 +63,45 @@ trait VendorGallery
     	}
     	$galleries = UserPortfolio::orderBy('id', 'desc')->get();
     	return view('vendor.portfolio', compact('galleries'));
+    }
+
+    public function vendor_location()
+    {
+        $data['user'] = Auth::guard('vendor')->user();
+
+        if($this->__req->isMethod('post')){
+            $this->validate($this->__req, [
+                'country_id' => 'required|numeric',
+                'state_id' => 'required|numeric',
+                'title' => 'required|max:190',
+            ]);
+
+            $insert = $this->__req->except('_token');
+            // dd($insert);
+            if($data['user']->vendor_locations()->create($insert)){
+                return redirect(route('vendor_location'));
+            }
+        }
+
+        $data['profile'] = $data['user']->vendor_profile;
+        $data['countries'] = Country::all(['id', 'name']);
+        $data['albums'] = Gallery::where('user_id',$data['user']->id)->get(['id','title']);
+        $data['vendor_types'] = VendorType::all(['id', 'title']);
+        $data['galleries'] = UserPortfolio::orderBy('id', 'desc')->get();
+        $data['locations'] = $data['user']->vendor_locations()->get();
+
+        return view('vendor.profile-info', $data);
+    }
+
+    public function location_delete($id)
+    {
+        $data['user'] = Auth::guard('vendor')->user();
+        $location = VendorAvailablePlace::where('vendor_id', $data['user']->id)->find($id);
+        if(!empty($location)){
+            $location->forceDelete();
+        }
+        return redirect(route('vendor_location'));
+        
     }
     
     

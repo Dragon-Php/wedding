@@ -1,0 +1,35 @@
+.loader, .vendor_loader, .loader_search {
+    position: fixed;
+    z-index: 99;
+    background: #00000085;
+    opacity: unset;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+
+.loader img, .vendor_loader img{
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 100px;
+    height: 100px;
+    
+}
+
+.loader_search img {
+    position: absolute;
+    left: 47%;
+    top: 45%;
+    width: 100px;
+    height: 100px; 
+}
+
+
+
+a {
+    cursor: pointer;
+}

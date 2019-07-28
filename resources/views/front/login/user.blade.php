@@ -24,6 +24,7 @@
 
                 <span class="signup-div customer_login_form" data-url="{{route('user_login')}}">
                     <div class="login_success"></div>
+                    <div class="loader"><img src='https://loading.io/spinners/dual-ring/lg.dual-ring-loader.gif' /></div>
                     <div class="form-group"> 
                         <input type="email" class="form-control"  id="userloginemail" placeholder="Email*">
                     </div>
@@ -44,6 +45,7 @@
 
                 <span class="new-signup-div" data-url="{{route('user_register')}}" style="display: none;">
                     <div class="success"></div>
+                    <div class="loader"></div>
                     <div class="form-group"> 
                         <input type="text" class="form-control" id="userregname" placeholder="Name*">
                     </div>

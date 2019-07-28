@@ -34,22 +34,29 @@ Route::get('login', function(){
 })->name('login');
 
 Route::get('Contact-Us', function(){
-	return view('front.contactus');
+	$data['page_content'] = \App\Master\Page::where('id', '6')->first();
+	return view('front.contactus', $data);
 })->name('contactus');
 
 Route::get('Privacy-Policy', function(){
-	return view('front.privatepolicy');
+	$data['page_content'] = \App\Master\Page::where('id', '3')->first();
+	return view('front.privatepolicy', $data);
 })->name('privacypolicy');
 Route::get('About-Us', function(){
-	return view('front.aboutus');
+	$data['page_content'] = \App\Master\Page::where('id', '2')->first();
+	return view('front.aboutus', $data);
 })->name('aboutus');
 Route::get('Blogs', function(){
-	return view('front.blogs');
+	$data['blog_first'] = \App\Master\Page::where('id', '4')->first();
+	$data['blog_second'] = \App\Master\Page::where('id', '5')->first();
+	$data['pages'] = \App\Master\Page::get();
+	$data['blogs'] = \App\Master\Blog::get();
+	return view('front.blogs', $data);
 })->name('blogs');
 
 Route::get('Blog-Detail', function(){
 	return view('front.blogdetail');
-})->name('blogdetail');
+});
 
 Route::get('Write-Review', function(){
 	return view('front.write-review');
@@ -90,6 +97,16 @@ Route::group(['middleware'=>['auth:admin'], 'namespace'=>'Admin'], function(){
 	Route::match(['get', 'post'],'Admin-EditVendorType/{id}', 'VendorTypeController@edit');
 	Route::match(['get', 'post'],'Admin-DeleteVendorType/{id}', 'VendorTypeController@delete');
 
+	Route::get('Admin-Blog', 'BlogController@index')->name('adminblog');
+	Route::match(['get', 'post'],'Admin-AddBlog', 'BlogController@create')->name('admin_addblog');
+	Route::match(['get', 'post'],'Admin-EditBlog/{id}', 'BlogController@edit');
+	Route::match(['get', 'post'],'Admin-DeleteBlog/{id}', 'BlogController@delete');
+
+	Route::get('Admin-Page', 'PageController@index')->name('adminpage');
+	Route::match(['get', 'post'],'Admin-EditPage/{id}', 'PageController@edit');
+
+	Route::match(['get', 'post'],'Admin-Setting', 'SettingController@index')->name('setting');
+
 	Route::get('Admin-Vendor', 'VendorController@index')->name('adminvendor');
 	Route::match(['get', 'post'],'Admin-AddVendor', 'VendorController@create')->name('admin_addvendor');
 	Route::match(['get', 'post'],'Admin-EditVendor/{id}', 'VendorController@edit');
@@ -107,8 +124,10 @@ Route::group(['middleware'=>['auth:vendor'], 'namespace'=>'Vendor'], function(){
 		Route::match(['get', 'post'],'Profile', 'ProfileController@index')->name('vendor_profile');
 		Route::match(['get', 'post'],'Album', 'ProfileController@album')->name('album');
 		Route::match(['get', 'post'],'Gallery', 'ProfileController@gallery')->name('gallery');
+		Route::match(['get', 'post'],'Locations', 'ProfileController@vendor_location')->name('vendor_location');
 		Route::get('Album-Delete/{id}', 'ProfileController@album_delete');
 		Route::get('Gallery-Delete/{id}', 'ProfileController@gallery_delete');
+		Route::get('Location/Delete/{id}', 'ProfileController@location_delete');
 	});
 });
 

@@ -5,42 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="h1">Plan your Event</h1>
-                <form>
-                    <ul class="banner-form">
-                        <li>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option>All categories</option>
-                                    @foreach($categories as $category)
-                                    <option>{{ $category->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option>Contry</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option>City</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </li>
-                    </ul>
-                </form>
+                @include('front.layouts.search')
 
             </div>
         </div>

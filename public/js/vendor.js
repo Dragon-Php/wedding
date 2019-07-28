@@ -61,12 +61,17 @@ vendorlogin.click(function(){
         $.ajax({
             url : $('.vendor_login').attr('data-url'),
             type:'POST',
+            beforeSend: function() {
+                $('.vendor_loader').show();
+                $('.vendor_loader').html("<img src='https://loading.io/spinners/dual-ring/lg.dual-ring-loader.gif' />");
+            },
             data : { 
                     email : vendorloginemail.val(), 
                     password : vendorloginpassword.val(), 
                     _token:$('meta[name=__token]').attr('data-value') 
                 },
             success : function(result){
+                $('.vendor_loader').hide();
                 var obj = JSON.parse(result);
                 if(obj.status == '1'){
                     alert('Login successfully.');
@@ -129,6 +134,10 @@ vendor_signup.click(function(){
         $.ajax({
             url : $('.vendor_signup').attr('data-url'),
             type:'POST',
+            beforeSend: function() {
+                $('.vendor_loader').show();
+                $('.vendor_loader').html("<img src='https://loading.io/spinners/dual-ring/lg.dual-ring-loader.gif' />");
+            },
             data : { 
                     brand_name : brand_name.val(), 
                     vendor_city : vendor_city.val(), 
@@ -139,6 +148,7 @@ vendor_signup.click(function(){
                     _token:$('meta[name=__token]').attr('data-value') 
                 },
             success : function(result){
+                $('.vendor_loader').hide();
                 var obj = JSON.parse(result);
                 if(obj.status == '1'){
                     console.log(obj.msg);

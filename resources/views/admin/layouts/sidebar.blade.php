@@ -12,7 +12,7 @@
            
             
             <li class="nav-item start {{ \Request::segment(1) == 'Admin-Dashboard' ? 'active' : ''}} open">
-                <a href="index.html" class="nav-link ">
+                <a href="{{url('Admin-Dashboard')}}" class="nav-link ">
                     <i class="icon-bar-chart"></i>
                     <span class="title">Dashboard </span>
                     <span class="selected"></span>
@@ -21,6 +21,21 @@
             <li class="heading">
                 <h3 class="uppercase">System</h3>
             </li>
+            <li class="nav-item start {{ \Request::segment(1) == 'Admin-Setting' ? 'active' : ''}} open">
+                <a href="{{route('setting')}}" class="nav-link ">
+                    <i class="fa fa-cog"></i>
+                    <span class="title">Setting </span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+            <li class="nav-item start {{ \Request::segment(1) == 'Admin-Page' ? 'active' : ''}} open">
+                <a href="{{route('adminpage')}}" class="nav-link ">
+                    <i class="fa fa-cog"></i>
+                    <span class="title">Page </span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+
             <li class="nav-item  {{ \Request::segment(1) == 'Admin-Country' || \Request::segment(1) == 'Admin-AddCountry' || \Request::segment(1) == 'Admin-EditCountry' ? 'active' : ''}}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-tag"></i>
@@ -136,6 +151,27 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="nav-item  {{ \Request::segment(1) == 'Admin-Blog' || \Request::segment(1) == 'Admin-AddBlog' || \Request::segment(1) == 'Admin-EditBlog' ? 'active' : ''}}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-tag"></i>
+                    <span class="title">Blogs</span>
+                    <span class="arrow {{ \Request::segment(1) == 'Admin-Blog' || \Request::segment(1) == 'Admin-AddBlog' || \Request::segment(1) == 'Admin-EditBlog' ? 'open' : ''}}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item {{ \Request::segment(1) == 'Admin-Blog' ? 'active' : ''}} ">
+                        <a href="{{ route('adminblog')}}" class="nav-link ">
+                            <span class="title">List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ \Request::segment(1) == 'Admin-AddBlog' ? 'active' : ''}} ">
+                        <a href="{{route('admin_addblog')}}" class="nav-link ">
+                            <span class="title">Add</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             
         </ul>
         <!-- END SIDEBAR MENU -->

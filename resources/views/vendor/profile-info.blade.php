@@ -31,6 +31,8 @@
                         <button class="tablinks {{Route::currentRouteName() == 'album' ? 'active':''}}" onclick="window.location.href = '{{route('album')}}'">Album</button>
 
                         <button class="tablinks {{Route::currentRouteName() == 'gallery' ? 'active':''}}" onclick="window.location.href = '{{route('gallery')}}'">Gallery</button>
+
+                        <button class="tablinks {{Route::currentRouteName() == 'vendor_location' ? 'active':''}}" onclick="window.location.href = '{{route('vendor_location')}}'">Location</button>
                         <!--  -->
                         
                         <a href="{{ route('vendor_logout')}}"><button class="tablinks" onclick="openCity(event, 'logout')">Logout</button></a>
@@ -60,6 +62,15 @@
                             </div>
                             <div class="col-md-10">
                                 <h5>{{$user->name}}</h5>
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" value="{{$user->name}}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" value="{{$user->email}}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="contact" class="form-control" value="{{$user->contact}}" placeholder="contact number">
+                                </div>
                                 <div class="form-group">
                                     <select class="form-control" name="country_id" onchange="getState(this.value)">
                                         <option value="">Select Country</option>
@@ -189,6 +200,76 @@
                             </div>
                         </div>
                         
+                    </div>
+
+                    <div id="Location" class="tabcontent {{Route::currentRouteName() == 'vendor_location' ? 'active_tabcontent':''}}" >
+                        {{ Form::open(['url'=>route('vendor_location'), 'files'=>true])}}
+                        <div class="row">
+                            <div class="col-md-1">
+                                <i class="fa fa-globe"></i>
+                            </div>
+                            <div class="col-md-10">
+                                <h5>Available locations</h5>
+                               
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="country_id" onchange="getState(this.value)">
+                                            <option value="">Select Country</option>
+                                            @foreach($countries as $country)
+                                            <option value="{{$country->id}}">{{$country->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->first('country_id'))
+                                            <font color="red">{{ $errors->first('country_id') }}</font>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select class="form-control states" name="state_id">
+                                            <option value="">Select State</option>
+                                        </select>
+                                        @if($errors->first('state_id'))
+                                            <font color="red">{{ $errors->first('state_id') }}</font>
+                                        @endif
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="title" placeholder="address">
+                                    @if($errors->first('title'))
+                                        <font color="red">{{ $errors->first('title') }}</font>
+                                    @endif
+                                </div>
+                                <button class="btn btn-primary" type="submit" style="margin-top: 10px"> Save</button>
+                            </div>
+                        </div>
+                        {{ Form::close()}}
+                        <div class="row" style="margin-top: 20px">
+                            
+                            <div class="col-md-12">
+                                
+                               
+                                <table class="table table-stripped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Address</th>
+                                            <th>State</th>
+                                            <th>Country</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($locations as $location)
+                                        <tr>
+                                            <td>{{$location->title}}</td>
+                                            <td>{{$location->state->name}}</td>
+                                            <td>{{$location->country->name}}</td>
+                                            <td><a href="{{ url('Vendor/Location/Delete/'.$location->id)}}">remove</a></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>    
                     </div>
                   
 

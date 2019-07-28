@@ -8,6 +8,7 @@
     {{ Html::style('css/bootstrap.min.css')}}
     {{ Html::style('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}
     {{ Html::style('css/style.css')}}
+    {{ Html::style('css/app.css')}}
     {{ Html::style('css/responsive.css')}}
     {{ Html::script('js/jquery.min.js')}}
     

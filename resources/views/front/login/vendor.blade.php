@@ -15,6 +15,7 @@
             <form>
                 <span class="customer-signup vendor_login" data-url="{{ route('vendor_login')}}">
                     <div class="vendor_loginsuccess"></div>
+                    <div class="vendor_loader"></div>
                     <div class="form-group"> 
                         <input type="email" id="vendorloginemail" class="form-control" placeholder="Email*">
                     </div>
@@ -39,6 +40,7 @@
                 </span>
                 <span class="customer-new-signup vendor_signup" data-url="{{ route('vendor_register')}}"  style="display: none;">
                     <div class="vendor_regsuccess"></div>
+                    <div class="vendor_loader"></div>
                     <div class="form-group"> 
                         <input type="text" class="form-control" id="brand_name" placeholder="Brand name*">
                     </div>

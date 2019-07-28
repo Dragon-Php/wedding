@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Master\UserPortfolio');
     }
+
+    public function vendor_locations()
+    {
+        return $this->hasMany('App\Master\VendorAvailablePlace', 'vendor_id');
+    }
 }

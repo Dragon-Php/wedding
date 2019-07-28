@@ -5,42 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="h1">Plan your Event</h1>
-                <form>
-                    <ul class="banner-form">
-                        <li>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option>All categories</option>
-                                    @foreach($categories as $category)
-                                    <option>{{ $category->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option>Contry</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option>City</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </li>
-                    </ul>
-                </form>
+                @include('front.layouts.search')
 
             </div>
         </div>
@@ -123,9 +88,9 @@
             <div class="col-8 col-sm-8 col-md-9 col-lg-11 col-xl-11">
                 <h2 class="title">{{Html::image($category_->icon, '', ['class'=>'img-fluid', 'width'=>'30'])}} {{$category_->title}}</h2>
             </div>
-            <div class="col-4 col-sm-4 col-md-3 col-lg-1 col-xl-1">
+            <!-- <div class="col-4 col-sm-4 col-md-3 col-lg-1 col-xl-1">
                 <a href="{{url('Category/'.$category_->slug)}}" class="view-all">View all</a>
-            </div>
+            </div> -->
         </div>
         <div class="category-gallery">
             <div class="row">
@@ -146,8 +111,8 @@
                                         <h5>{{$vendor_type->title}}</h5>
                                     </a>
                                 </li>
-                                <li><span class="StarRating center rating-5 regular"><i class="fa fa-star margin-r-5"></i> 4.9</span>
-                                    <p>5 reviews</p>
+                                <li><!-- <span class="StarRating center rating-5 regular"><i class="fa fa-star margin-r-5"></i> 4.9</span>
+                                    <p>5 reviews</p> -->
                                 </li>
                             </ul>
                             <!-- <ul class="price">

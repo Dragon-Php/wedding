@@ -38,8 +38,13 @@ $('.user_newregister').click(function(){
 		$.ajax({
 			url : $('.new-signup-div').attr('data-url'),
 			type:'POST',
+			beforeSend: function() {
+				$('.loader').show();
+				$('.loader').html("<img src='https://loading.io/spinners/dual-ring/lg.dual-ring-loader.gif' />");
+			},
 			data : { name : userregname.val(), contact : userregcontact.val(), email : userregemail.val(), password : userregpassword.val(), _token:$('meta[name=__token]').attr('data-value') },
 			success : function(result){
+				$('.loader').hide();
 				var obj = JSON.parse(result);
 				if(obj.status == '1'){
 					console.log(obj.msg);
@@ -116,10 +121,15 @@ $('.customer_login').click(function(){
 		$.ajax({
 			url : $('.customer_login_form').attr('data-url'),
 			type:'POST',
+			beforeSend: function() {
+				$('.loader').show();
+				$('.loader').html("<img src='https://loading.io/spinners/dual-ring/lg.dual-ring-loader.gif' />");
+			},
 			data : {  email : userloginemail.val(), password : userloginpassword.val(), _token:$('meta[name=__token]').attr('data-value') },
 			success : function(result){
 				var obj = JSON.parse(result);
 				$('.login_success').show();
+				$('.loader').hide();
 				if(obj.status == '1'){
 					$('.login_success').html(obj.msg);
 					$('.login_success').css('color', 'green');

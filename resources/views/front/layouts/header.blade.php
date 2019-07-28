@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <p>India's Favourite Wedding Planning Platform</p>
+                    <!--<p> India's Favourite  Wedding Planning Platform</p>-->
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <p class="text-right">{{ Html::image('images/review-icon.png', '', ['class'=>'img-fluid'])}}<a href="{{route('write-review')}}" style="color: #fff;"> Write A Review</a></p>

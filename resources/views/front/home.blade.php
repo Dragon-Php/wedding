@@ -1,7 +1,7 @@
 @extends('front.index')
 @section('content')
 <section class="home-banner">
-    <img src="images/homebanner.jpg" class="img-fluid">
+    {{ Html::image($page_content->image, '', ['class'=>'img-fluid'])}}
 </section>
 <section class="category">
     <div class="container-fluid">
@@ -27,7 +27,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <input type="button" class="custom-button" onclick="window.location='#';" value="Browse all Categories">
+                <input type="button" class="custom-button" onclick="window.location='{{ route('categories') }}';" value="Browse all Categories">
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2 class="title">Browse Real Weddings</h2>
+                <h2 class="title" >Browse Real Weddings</h2>
             </div>
         </div>
         <div class="category-gallery">
@@ -71,7 +71,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <input type="button" class="custom-button" onclick="window.location='#';" value="Browse all Categories">
+                <input type="button" class="custom-button" onclick="window.location='{{ route('categories') }}'" value="Browse all Categories">
             </div>
         </div>
     </div>
@@ -84,15 +84,7 @@
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="contact-desc">
-                        <div class="contact-heading">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2 class="title">Get WedMeGood on your smartphone</h2>
-                                    <h6>Explore wedding ideas | Get wedding checklist | Shortlist Vendors</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <p>You will receive an SMS with a link to download the WedMeGood App for freeYou will receive an SMS with a link to download the WedMeGood App for freeYou will receive an SMS with a link to download the WedMeGood App for freeYou will receive an SMS with a link to download the WedMeGood App for freeYou will receive an SMS with a link to download the WedMeGood App for freeYou will receive an SMS with a link to download the WedMeGood App for freeYou will receive an SMS with a link to download the WedMeGood App for freeYou will receive an SMS with a link to download the WedMeGood App for freeYou will receive an SMS with a link to download the WedMeGood App for free</p>
+                        {!! $page_content->description!!}
 
                     </div>
                 </div>

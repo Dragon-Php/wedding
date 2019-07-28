@@ -8,6 +8,8 @@ use Auth;
 
 use App\Master\Country;
 use App\Master\State;
+use App\Master\VendorAvailablePlace;
+use App\Master\VendorType;
 
 class AjaxController extends Controller
 {
@@ -81,15 +83,20 @@ class AjaxController extends Controller
             'password' => $this->__req->password,
         ];
         $user = User::where('email', $this->__req->email)->first();
-        if($user->hasRole('User')){
-            if(Auth::attempt($credentials)){
-                echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
+        if(!empty($user)){
+            if($user->hasRole('User')){
+                if(Auth::attempt($credentials)){
+                    echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
+                } else {
+                    echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
+                }
             } else {
-                echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
-            }
+                echo json_encode(['status'=>'2', 'msg'=>'Authentication failed.']);
+            } 
         } else {
-            echo json_encode(['status'=>'2', 'msg'=>'Authentication failed.']);
+            echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
         }
+        
         
     }
 
@@ -100,15 +107,20 @@ class AjaxController extends Controller
 		    'password' => $this->__req->password,
     	];
         $user = User::where('email', $this->__req->email)->first();
-        if($user->hasRole('Vendor')){
-            if(Auth::guard('vendor')->attempt($credentials)){
-                echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
+        if(!empty($user)){
+            if($user->hasRole('Vendor')){
+                if(Auth::guard('vendor')->attempt($credentials)){
+                    echo json_encode(['status'=>'1', 'msg'=>'Login successfully.']);
+                } else {
+                    echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
+                }
             } else {
-                echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
+                echo json_encode(['status'=>'2', 'msg'=>'Authentication failed.']);
             }
         } else {
-            echo json_encode(['status'=>'2', 'msg'=>'Authentication failed.']);
+            echo json_encode(['status'=>'2', 'msg'=>'Invalid credentials.']);
         }
+        
         
     }
 
@@ -133,5 +145,70 @@ class AjaxController extends Controller
                 echo '<option value="'.$state->id.'">'.$state->name.'</option>';
             }
         }
+    }
+
+    public function vendorcity($country)
+    {
+        echo '<option value="">City</option>';
+        $cities = State::whereIn('id', function($query){
+            $query->select('state_id')
+            ->from('vendor_available_places')
+            
+            ->groupBy('state_id');
+        })->where('country_id', $country)->get();
+        if($cities->count() > 0){
+            foreach ($cities as $city) {
+                echo '<option value="'.$city->id.'">'.$city->name.'</option>';
+            }  
+        }
+    
+    }
+
+    public function vendors()
+    {
+        if(
+            $this->__req->category != '' || 
+            $this->__req->country != '' || 
+            $this->__req->city != ''
+        ){
+
+            $query = "select u.* from users as u ";
+            if($this->__req->category != ''){
+
+                $query .= "join user_vendor_type as uvt on uvt.user_id = u.id JOIN vendor_types as vt on uvt.vendor_type_id = vt.id JOIN category_vendor_type as cvt ON cvt.vendor_type_id = vt.id JOIN categories as c ON c.id = cvt.category_id ";
+            }
+
+            if($this->__req->country != ''){
+                $query .= "JOIN vendor_available_places as vap ON vap.vendor_id = u.id ";
+            }
+
+            $query .= "where ";
+
+            if($this->__req->category != ''){
+                $query .= "c.id = '".$this->__req->category."' and ";
+            }
+
+            if($this->__req->country != ''){
+                $query .= "vap.country_id = '".$this->__req->country."' and ";
+            }
+            if($this->__req->city != ''){
+                $query .= "vap.state_id = '".$this->__req->city."' ";
+            }
+
+
+            $query = trim($query, "and ") . " GROUP BY u.id";
+            $model = new User();
+            $data['vendors'] = $model->hydrate(
+                \DB::select($query)
+            ); 
+            return view('front.layouts.vendorlist', $data);
+            
+        } else {
+            $vendortype = VendorType::where('slug', $this->__req->vendor_type)->first();
+            $data['vendors'] = $vendortype->users()->get();
+            $data['vendortype']  = $vendortype ;
+            return view('front.layouts.vendorlist', $data);
+        }
+        // print_r($this->__req->all());
     }
 }
