@@ -54,8 +54,9 @@ Route::get('Blogs', function(){
 	return view('front.blogs', $data);
 })->name('blogs');
 
-Route::get('Blog-Detail', function(){
-	return view('front.blogdetail');
+Route::get('Blog-Detail/{id}', function($id){
+	$data['blog'] = \App\Master\Blog::find($id);
+	return view('front.blogdetail', $data);
 });
 
 Route::get('Write-Review', function(){

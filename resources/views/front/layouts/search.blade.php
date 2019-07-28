@@ -1,4 +1,4 @@
-<form action="{{ url('api/vendors')}}" class="searchcontent" vendor-type="{{ \Request::segment(2)}}">
+<form action="{{ url('api/vendors')}}" class="searchcontent" data-value="{{ \Request::segment(1)}}" vendor-type="{{ \Request::segment(2)}}">
     <div class="loader_search"></div>
     <ul class="banner-form">
         <li>

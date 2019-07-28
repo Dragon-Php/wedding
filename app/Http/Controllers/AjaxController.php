@@ -204,10 +204,12 @@ class AjaxController extends Controller
             return view('front.layouts.vendorlist', $data);
             
         } else {
-            $vendortype = VendorType::where('slug', $this->__req->vendor_type)->first();
-            $data['vendors'] = $vendortype->users()->get();
-            $data['vendortype']  = $vendortype ;
-            return view('front.layouts.vendorlist', $data);
+            if($this->__req->vendor_type == 'All-Vendors'){
+                $vendortype = VendorType::where('slug', $this->__req->vendor_type)->first();
+                $data['vendors'] = $vendortype->users()->get();
+                $data['vendortype']  = $vendortype ;
+                return view('front.layouts.vendorlist', $data);
+            }
         }
         // print_r($this->__req->all());
     }

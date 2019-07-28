@@ -38,7 +38,7 @@
                 @foreach($blogs as $blog)
                 <div class="col-12 col-sm-4 col-md-4 co-lg-4 col-xl-4">
                     <div class="search-blog">
-                        <a href="blog-detail.html">
+                        <a href="{{url('Blog-Detail/'.$blog->id)}}">
                             {{ Html::image($blog->image, '', ['class'=>'img-fluid'])}}
                             <h3>{{ $blog->title}}</h3>
                             <h6>BY {{ $blog->auther}} | {{ date('d M, Y', strtotime($blog->created_at))}}</h6>
