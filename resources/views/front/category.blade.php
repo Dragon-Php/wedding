@@ -57,8 +57,8 @@
                                         </a>
                                         
                                     </li>
-                                    <li><span class="StarRating center rating-5 regular"><i class="fa fa-star margin-r-5"></i> 4.9</span>
-                                        <p>5 reviews</p>
+                                    <li><!-- <span class="StarRating center rating-5 regular"><i class="fa fa-star margin-r-5"></i> 4.9</span>
+                                        <p>5 reviews</p> -->
                                     </li>
                                 </ul>
                                 <!-- <ul class="price">
