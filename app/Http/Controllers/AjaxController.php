@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 use App\Master\Country;
 use App\Master\State;
 use App\Master\VendorAvailablePlace;
@@ -60,8 +63,9 @@ class AjaxController extends Controller
                 'slug' => substr(strtoupper(str_replace(' ', '', $this->__req->name)), 0, 6).rand(10000, 100000),
             ];
             $vendor = User::create($insert);
+            $role = Role::findByName('Vendor', 'vendor');
             if($vendor){
-                $vendor->assignRole('Vendor');
+                $vendor->assignRole($role);
                 if($this->__req->vendor_cateory != ''){
                     $category = explode(',', $this->__req->vendor_cateory);
                     $vendor->vendor_type()->sync($category);

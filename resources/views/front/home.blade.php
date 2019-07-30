@@ -43,35 +43,26 @@
         </div>
         <div class="category-gallery">
             <div class="row">
+                @php 
+                $blogs = \App\Master\Blog::limit(3)->get();
+
+                @endphp
+                @foreach($blogs as $blog)
                 <div class="col-12 col-sm-4 col=md-4 col=lg-4 col-xl-4">
                     <div class="category-img">
-                        <img src="images/browse-1.jpg" class="img-fluid">
+                        {{Html::image($blog->image, '', ['class'=>'img-fluid'])}}
                         <div class="category-name">
-                            <h6><a href=""><a href=""><a href="">Here is my experience of buying my sabyasachi lahenga !</a></h6>
+                            <h6><a href="{{url('Blog-Detail/'.$blog->id)}}">{{$blog->title}}</a></h6>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-4 col=md-4 col=lg-4 col-xl-4">
-                    <div class="category-img">
-                        <img src="images/browse-2.jpg" class="img-fluid">
-                        <div class="category-name">
-                            <h6><a href=""><a href=""><a href="">Here is my experience of buying my sabyasachi lahenga !</a></h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-4 col=md-4 col=lg-4 col-xl-4">
-                    <div class="category-img">
-                        <img src="images/browse-1.jpg" class="img-fluid">
-                        <div class="category-name">
-                            <h6><a href=""><a href=""><a href="">Here is my experience of buying my sabyasachi lahenga !</a></h6>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+               
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <input type="button" class="custom-button" onclick="window.location='{{ route('categories') }}'" value="Browse all Categories">
+                <input type="button" class="custom-button" onclick="window.location='{{ route('blogs') }}'" value="Browse all Blogs">
             </div>
         </div>
     </div>

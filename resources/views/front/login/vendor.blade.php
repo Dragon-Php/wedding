@@ -1,7 +1,7 @@
 <div class="modal-content" id="customer-div" style="display: none;">
     <div class="modal-body">
         <div class="img-form">
-            <img src="images/user-auth2.png">
+            <img src="{{url('images/user-auth2.png')}}">
         </div>
         <div class="login-form">
             <div class="modal-header">

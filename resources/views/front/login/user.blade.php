@@ -2,7 +2,7 @@
 
     <div class="modal-body">
         <div class="img-form">
-            <img src="images/user-auth.png">
+            <img src="{{url('images/user-auth.png')}}">
         </div>
         <div class="login-form">
             <div class="modal-header">
